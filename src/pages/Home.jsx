@@ -190,15 +190,15 @@ const Home = () => {
                     <motion.div
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
-                        className="inline-block shadow-[0_20px_50px_rgba(201,169,97,0.2)]"
+                        className="inline-block"
                     >
                         <Link
                             to="/contact"
-                            className="px-24 py-8 bg-[#c9a961] hover:bg-white text-black font-extrabold transition-all duration-700 text-[15px] uppercase tracking-[0.4em] relative group overflow-hidden"
+                            className="px-24 py-8 bg-[#c9a961] text-black font-extrabold text-[15px] uppercase tracking-[0.4em] relative group overflow-hidden block transition-all duration-500 hover:shadow-[0_25px_60px_rgba(201,169,97,0.4)]"
                             style={{ fontFamily: "'Inter', sans-serif" }}
                         >
-                            <span className="relative z-10">Book a Consultation</span>
-                            <motion.div className="absolute inset-0 bg-white translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
+                            <span className="relative z-10 transition-colors duration-500">Book a Consultation</span>
+                            <div className="absolute inset-0 bg-gradient-to-t from-[#b89851] to-[#c9a961] opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                         </Link>
                     </motion.div>
                 </div>

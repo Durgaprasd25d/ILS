@@ -7,7 +7,7 @@ import About from './pages/About'
 import Contact from './pages/Contact'
 import Navigation from './components/Navigation'
 import Footer from './components/Footer'
-import CustomCursor from './components/CustomCursor'
+
 import SmoothScroll from './components/SmoothScroll'
 import './index.css'
 
@@ -16,10 +16,6 @@ function App() {
     <BrowserRouter>
       <SmoothScroll>
         <div className="flex flex-col min-h-screen relative selection:bg-[#c9a961] selection:text-black">
-          {/* Atmospheric Layer */}
-          <div className="grain-overlay opacity-[0.03] lg:opacity-[0.05]" />
-          
-          <CustomCursor />
           <Navigation />
           
           <main className="flex-grow">

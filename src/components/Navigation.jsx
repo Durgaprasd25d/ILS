@@ -76,18 +76,15 @@ const Navigation = () => {
             <div className="relative z-10 max-w-[1800px] mx-auto px-8 lg:px-16 flex items-center justify-between">
                 {/* Logo Branding */}
                 <Link to="/" className="group flex flex-col items-start select-none">
-                    <motion.div className="overflow-hidden relative">
-                        <motion.span 
-                            className="text-white text-3xl lg:text-4xl tracking-[0.1em] leading-none block"
-                            style={{ fontFamily: "'Playfair Display', serif" }}
-                            whileHover={{ letterSpacing: "0.15em", color: "#c9a961" }}
-                            transition={{ duration: 0.4 }}
-                        >
-                            INTERIQ
-                        </motion.span>
-                    </motion.div>
+                    <motion.span 
+                        className="text-white text-3xl lg:text-4xl tracking-[0.1em] leading-none block transition-all duration-300"
+                        style={{ fontFamily: "'Playfair Display', serif" }}
+                        whileHover={{ opacity: 0.7 }}
+                    >
+                        INTERIQ
+                    </motion.span>
                     <span 
-                        className="text-[#c9a961] text-[10px] lg:text-[11px] tracking-[0.5em] mt-1 uppercase font-light"
+                        className="text-[#c9a961] text-[10px] lg:text-[11px] tracking-[0.5em] mt-1 uppercase font-light transition-opacity duration-300 group-hover:opacity-60"
                         style={{ fontFamily: "'Inter', sans-serif" }}
                     >
                         Interiors
@@ -220,9 +217,29 @@ const Navigation = () => {
                         animate={{ clipPath: 'circle(150% at 90% 5%)' }}
                         exit={{ clipPath: 'circle(0% at 90% 5%)' }}
                         transition={{ duration: 1.2, ease: [0.77, 0, 0.175, 1] }}
-                        className="fixed inset-0 bg-[#0a0a0a] z-50 lg:hidden flex flex-col p-12"
+                        className="fixed inset-0 bg-[#0a0a0a] z-[60] lg:hidden flex flex-col p-8"
                     >
-                        <div className="mt-20 flex flex-col gap-8">
+                        {/* Close Button */}
+                        <div className="flex justify-between items-center mb-16">
+                            <span 
+                                className="text-white text-2xl tracking-[0.1em]"
+                                style={{ fontFamily: "'Playfair Display', serif" }}
+                            >
+                                INTERIQ
+                            </span>
+                            <button
+                                onClick={() => setIsOpen(false)}
+                                className="text-white p-3 relative z-[70]"
+                                aria-label="Close menu"
+                            >
+                                <div className="w-8 h-8 relative flex items-center justify-center">
+                                    <span className="absolute w-full h-[2px] bg-white rotate-45"></span>
+                                    <span className="absolute w-full h-[2px] bg-white -rotate-45"></span>
+                                </div>
+                            </button>
+                        </div>
+
+                        <div className="flex flex-col gap-8">
                             {navLinks.map((link, idx) => (
                                 <motion.div
                                     key={link.name}
