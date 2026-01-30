@@ -1,12 +1,11 @@
-import { NextResponse } from 'next/server';
-
-export function middleware(request) {
-  const hostname = request.headers.get('host');
+export default async function middleware(request) {
+  const url = new URL(request.url);
+  const hostname = url.hostname;
   
   // Check if the request is coming from the custom domain
   if (hostname === 'interiqinteriors.com' || hostname === 'www.interiqinteriors.com') {
     // Serve the "Under Work Process" page
-    return new NextResponse(
+    return new Response(
       `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -197,18 +196,18 @@ export function middleware(request) {
       {
         status: 200,
         headers: {
-          'Content-Type': 'text/html',
+          'Content-Type': 'text/html; charset=utf-8',
           'Cache-Control': 'public, max-age=0, must-revalidate',
         },
       }
     );
   }
   
-  // For Vercel default domain, continue with normal app
-  return NextResponse.next();
+  // For Vercel default domain and all other requests, continue normally
+  // Return null to let Vercel serve the static files
+  return null;
 }
 
-// Configure which routes should use this middleware
 export const config = {
   matcher: '/:path*',
 };
