@@ -62,10 +62,7 @@ const Footer = () => {
                 {/* Sub-Footer */}
                 <div className="mt-32 pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8 text-[10px] tracking-[0.4em] font-semibold text-white/30">
                     <p>© 2026 INTERIQ INTERIORS. ALL RIGHTS RESERVED.</p>
-                    <div className="flex gap-12 font-bold">
-                        <span className="hover:text-white cursor-pointer transition-colors">PRIVACY POLICY</span>
-                        <span className="hover:text-white cursor-pointer transition-colors">TERMS OF SERVICE</span>
-                    </div>
+                  
                 </div>
             </div>
         </footer>

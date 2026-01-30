@@ -1,10 +1,11 @@
 import { useState, useEffect, useRef } from 'react'
 import { Link, useLocation } from 'react-router'
 import { motion, AnimatePresence } from 'framer-motion'
+import headerBg from '../assets/headerbgimage.jpeg'
+import brandLogo from '../assets/logo.png'
 
 const Navigation = () => {
     const [isOpen, setIsOpen] = useState(false)
-    const [scrolled, setScrolled] = useState(false)
     const [activeDropdown, setActiveDropdown] = useState(null)
     const [mobileExpanded, setMobileExpanded] = useState(null)
     const location = useLocation()
@@ -20,14 +21,6 @@ const Navigation = () => {
             document.body.style.overflow = 'auto'
         }
     }, [isOpen])
-
-    useEffect(() => {
-        const handleScroll = () => {
-            setScrolled(window.scrollY > 50)
-        }
-        window.addEventListener('scroll', handleScroll)
-        return () => window.removeEventListener('scroll', handleScroll)
-    }, [])
 
     const toggleMobileExpanded = (name) => {
         setMobileExpanded(mobileExpanded === name ? null : name)
@@ -47,53 +40,29 @@ const Navigation = () => {
         { name: 'Contact', path: '/contact' }
     ]
 
-    // Magnetic Button Hook Logics
-    const [magneticPos, setMagneticPos] = useState({ x: 0, y: 0 })
-    const handleMagneticMove = (e) => {
-        const { clientX, clientY, currentTarget } = e
-        const { left, top, width, height } = currentTarget.getBoundingClientRect()
-        const x = clientX - (left + width / 2)
-        const y = clientY - (top + height / 2)
-        setMagneticPos({ x: x * 0.3, y: y * 0.3 })
-    }
-    const resetMagnetic = () => setMagneticPos({ x: 0, y: 0 })
-
     return (
-        <motion.nav
+        <nav
             ref={navRef}
-            initial={{ y: -100 }}
-            animate={{ y: 0 }}
-            transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
-            className={`fixed top-0 left-0 right-0 z-50 transition-all duration-700 ${
-                scrolled ? 'py-4' : 'py-8'
-            }`}
+            className="relative z-50 w-full"
+            style={{
+                backgroundImage: `url(${headerBg})`,
+                backgroundSize: 'cover',
+                backgroundPosition: 'bottom'
+            }}
         >
-            {/* Nav Background with Sophisticated Glassmorphism */}
-            <div className={`absolute inset-0 transition-opacity duration-700 ${scrolled ? 'opacity-100' : 'opacity-0'}`}>
-                <div className="glass w-full h-full" />
-            </div>
-
-            <div className="relative z-10 max-w-[1800px] mx-auto px-8 lg:px-16 flex items-center justify-between">
+            <div className="max-w-[1800px] mx-auto px-8 lg:px-16 h-24 lg:h-32 flex items-center justify-between border-b border-white/5">
                 {/* Logo Branding */}
-                <Link to="/" className="group flex flex-col items-start select-none">
-                    <motion.span 
-                        className="text-white text-3xl lg:text-4xl tracking-[0.1em] leading-none block transition-all duration-300"
-                        style={{ fontFamily: "'Playfair Display', serif" }}
-                        whileHover={{ opacity: 0.7 }}
-                    >
-                        INTERIQ
-                    </motion.span>
-                    <span 
-                        className="text-[#c9a961] text-[10px] lg:text-[11px] tracking-[0.5em] mt-1 uppercase font-light transition-opacity duration-300 group-hover:opacity-60"
-                        style={{ fontFamily: "'Inter', sans-serif" }}
-                    >
-                        Interiors
-                    </span>
+                <Link to="/" className="group flex items-center gap-3 select-none">
+                    <img 
+                        src={brandLogo} 
+                        alt="INTERIQ" 
+                        className="h-10 lg:h-12 w-auto object-contain brightness-110 contrast-110 hover:scale-105 transition-transform duration-500"
+                    />
                 </Link>
 
                 {/* Desktop Navigation */}
-                <div className="hidden lg:flex items-center gap-12">
-                    <div className="flex items-center gap-10">
+                <div className="hidden lg:flex items-center gap-10">
+                    <div className="flex items-center gap-8">
                         {navLinks.map((link) => (
                             <div 
                                 key={link.name}
@@ -103,8 +72,8 @@ const Navigation = () => {
                             >
                                 <Link
                                     to={link.path}
-                                    className={`relative text-[13px] uppercase tracking-[0.2em] font-medium transition-all duration-300 flex items-center gap-1 ${
-                                        location.pathname === link.path ? 'text-[#c9a961]' : 'text-white/60 hover:text-white'
+                                    className={`relative text-[14px] lg:text-[16px] font-light tracking-wide transition-all duration-300 flex items-center gap-1.5 ${
+                                        location.pathname === link.path ? 'text-white' : 'text-white/80 hover:text-white'
                                     }`}
                                     style={{ fontFamily: "'Inter', sans-serif" }}
                                 >
@@ -112,7 +81,7 @@ const Navigation = () => {
                                     {link.dropdown && (
                                         <motion.svg 
                                             animate={{ rotate: activeDropdown === link.name ? 180 : 0 }}
-                                            className="w-3 h-3 opacity-60" 
+                                            className="w-3 h-3 opacity-40 ml-0.5" 
                                             fill="none" 
                                             stroke="currentColor" 
                                             viewBox="0 0 24 24"
@@ -120,29 +89,22 @@ const Navigation = () => {
                                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                                         </motion.svg>
                                     )}
-                                    <motion.div 
-                                        className="absolute -bottom-1 left-0 right-0 h-[1px] bg-[#c9a961] origin-left"
-                                        initial={{ scaleX: 0 }}
-                                        whileHover={{ scaleX: 1 }}
-                                        animate={{ scaleX: location.pathname === link.path ? 1 : 0 }}
-                                        transition={{ duration: 0.4, ease: "circOut" }}
-                                    />
                                 </Link>
 
                                 <AnimatePresence>
                                     {link.dropdown && activeDropdown === link.name && (
                                         <motion.div
-                                            initial={{ opacity: 0, y: 20, scale: 0.95 }}
-                                            animate={{ opacity: 1, y: 0, scale: 1 }}
-                                            exit={{ opacity: 0, y: 15, scale: 0.95 }}
-                                            transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-                                            className="absolute top-full -left-4 w-64 glass-dark shadow-2xl mt-4 py-6 px-2 overflow-hidden"
+                                            initial={{ opacity: 0, y: 10 }}
+                                            animate={{ opacity: 1, y: 0 }}
+                                            exit={{ opacity: 0, y: 10 }}
+                                            transition={{ duration: 0.2 }}
+                                            className="absolute top-full -left-4 w-60 bg-[#0d0d0d] border border-white/5 shadow-[0_20px_50px_rgba(0,0,0,0.5)] mt-4 py-4 px-2 overflow-hidden rounded-[2px]"
                                         >
                                             {link.dropdown.map((subItem) => (
                                                 <Link
                                                     key={subItem.name}
                                                     to={subItem.path}
-                                                    className="block px-6 py-4 text-[11px] uppercase tracking-[0.25em] text-white/50 hover:text-white hover:bg-white/5 transition-all duration-300 rounded-sm"
+                                                    className="block px-6 py-3 text-[12px] uppercase tracking-[0.1em] text-white/50 hover:text-white hover:bg-white/[0.03] transition-all duration-300 rounded-sm"
                                                     style={{ fontFamily: "'Inter', sans-serif" }}
                                                 >
                                                     {subItem.name}
@@ -155,25 +117,15 @@ const Navigation = () => {
                         ))}
                     </div>
 
-                    {/* Book Consultation Button with Magnetic Effect */}
-                    <motion.div
-                        onMouseMove={handleMagneticMove}
-                        onMouseLeave={resetMagnetic}
-                        animate={{ x: magneticPos.x, y: magneticPos.y }}
-                        transition={{ type: "spring", stiffness: 350, damping: 20, mass: 0.5 }}
+                    {/* CTA Button */}
+                    <Link
+                        to="/contact"
+                        className="ml-4 inline-flex items-center justify-center px-8 lg:px-10 py-3 lg:py-4 border border-[#c9a961]/40 text-white hover:bg-[#c9a961] hover:text-black hover:border-[#c9a961] transition-all duration-500 text-[13px] uppercase tracking-[0.2em] font-medium"
+                        style={{ fontFamily: "'Inter', sans-serif" }}
                     >
-                        <Link
-                            to="/contact"
-                            className="px-8 py-3.5 border border-[#c9a961] text-[#c9a961] text-[12px] uppercase tracking-[0.25em] font-semibold hover:bg-[#c9a961] hover:text-black transition-all duration-500 block relative overflow-hidden group"
-                            style={{ fontFamily: "'Inter', sans-serif" }}
-                        >
-                            <span className="relative z-10">Book Consultation</span>
-                            <motion.div 
-                                className="absolute inset-0 bg-white/10 translate-y-full group-hover:translate-y-0 transition-transform duration-500" 
-                            />
-                        </Link>
-                    </motion.div>
-                </div>
+                        Book Consultation
+                    </Link>
+                </div> 
 
                 {/* Mobile Menu Toggle */}
                 <button
@@ -209,20 +161,20 @@ const Navigation = () => {
                 </button>
             </div>
 
-            {/* Mobile Menu Overlay - Circular Reveal Style */}
+            {/* Mobile Menu Overlay */}
             <AnimatePresence>
                 {isOpen && (
                     <motion.div
                         initial={{ clipPath: 'circle(0% at 90% 5%)' }}
                         animate={{ clipPath: 'circle(150% at 90% 5%)' }}
                         exit={{ clipPath: 'circle(0% at 90% 5%)' }}
-                        transition={{ duration: 1.2, ease: [0.77, 0, 0.175, 1] }}
-                        className="fixed inset-0 bg-[#0a0a0a] z-[60] lg:hidden flex flex-col p-8"
+                        transition={{ duration: 1, ease: [0.77, 0, 0.175, 1] }}
+                        className="fixed inset-0 bg-[#050505] z-[60] lg:hidden flex flex-col p-8"
                     >
                         {/* Close Button */}
                         <div className="flex justify-between items-center mb-16">
                             <span 
-                                className="text-white text-2xl tracking-[0.1em]"
+                                className="text-white text-3xl tracking-[0.1em]"
                                 style={{ fontFamily: "'Playfair Display', serif" }}
                             >
                                 INTERIQ
@@ -233,35 +185,35 @@ const Navigation = () => {
                                 aria-label="Close menu"
                             >
                                 <div className="w-8 h-8 relative flex items-center justify-center">
-                                    <span className="absolute w-full h-[2px] bg-white rotate-45"></span>
-                                    <span className="absolute w-full h-[2px] bg-white -rotate-45"></span>
+                                    <span className="absolute w-full h-[1px] bg-white rotate-45"></span>
+                                    <span className="absolute w-full h-[1px] bg-white -rotate-45"></span>
                                 </div>
                             </button>
                         </div>
 
-                        <div className="flex flex-col gap-8">
+                        <div className="flex flex-col gap-6">
                             {navLinks.map((link, idx) => (
                                 <motion.div
                                     key={link.name}
-                                    initial={{ opacity: 0, y: 30 }}
+                                    initial={{ opacity: 0, y: 20 }}
                                     animate={{ opacity: 1, y: 0 }}
-                                    transition={{ delay: 0.4 + (idx * 0.1) }}
+                                    transition={{ delay: 0.3 + (idx * 0.1) }}
                                 >
                                     {link.dropdown ? (
                                         <div className="w-full">
                                             <button 
                                                 onClick={() => toggleMobileExpanded(link.name)}
-                                                className="w-full flex items-center justify-between group py-2"
+                                                className="w-full flex items-center justify-between group py-3"
                                             >
                                                 <span 
-                                                    className={`text-[42px] uppercase tracking-[0.1em] font-light transition-colors duration-300 ${mobileExpanded === link.name ? 'text-[#c9a961]' : 'text-white/80'}`}
+                                                    className={`text-[36px] uppercase tracking-[0.05em] font-light transition-colors duration-300 ${mobileExpanded === link.name ? 'text-white' : 'text-white/60'}`}
                                                     style={{ fontFamily: "'Playfair Display', serif" }}
                                                 >
                                                     {link.name}
                                                 </span>
                                                 <motion.svg 
                                                     animate={{ rotate: mobileExpanded === link.name ? 180 : 0 }}
-                                                    className="w-8 h-8 text-[#c9a961]" 
+                                                    className="w-6 h-6 text-white/40" 
                                                     fill="none" 
                                                     stroke="currentColor" 
                                                     viewBox="0 0 24 24"
@@ -276,14 +228,14 @@ const Navigation = () => {
                                                         initial={{ height: 0, opacity: 0 }}
                                                         animate={{ height: "auto", opacity: 1 }}
                                                         exit={{ height: 0, opacity: 0 }}
-                                                        className="overflow-hidden flex flex-col gap-6 mt-6 pl-4 border-l border-[#c9a961]/30"
+                                                        className="overflow-hidden flex flex-col gap-5 mt-4 pl-4 border-l border-white/10"
                                                     >
                                                         {link.dropdown.map((sub) => (
                                                             <Link 
                                                                 key={sub.name}
                                                                 to={sub.path} 
                                                                 onClick={() => setIsOpen(false)}
-                                                                className="text-xl uppercase tracking-[0.2em] font-light text-white/40 active:text-[#c9a961]"
+                                                                className="text-lg uppercase tracking-[0.1em] font-light text-white/40 active:text-white"
                                                                 style={{ fontFamily: "'Inter', sans-serif" }}
                                                             >
                                                                 {sub.name}
@@ -297,7 +249,7 @@ const Navigation = () => {
                                         <Link
                                             to={link.path}
                                             onClick={() => setIsOpen(false)}
-                                            className="text-[42px] uppercase tracking-[0.1em] font-light text-white/80 hover:text-white block py-2"
+                                            className="text-[36px] uppercase tracking-[0.05em] font-light text-white/60 hover:text-white block py-3"
                                             style={{ fontFamily: "'Playfair Display', serif" }}
                                         >
                                             {link.name}
@@ -311,13 +263,12 @@ const Navigation = () => {
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             transition={{ delay: 0.8 }}
-                            className="mt-auto space-y-8"
+                            className="mt-auto pt-10"
                         >
-                            <div className="h-[1px] w-full bg-white/10" />
                             <Link
                                 to="/contact"
                                 onClick={() => setIsOpen(false)}
-                                className="block w-full text-center py-6 bg-[#c9a961] text-black font-bold uppercase tracking-[0.4em] text-[13px]"
+                                className="block w-full text-center py-6 border border-[#c9a961]/40 text-white font-medium uppercase tracking-[0.2em] text-[13px]"
                             >
                                 Book Consultation
                             </Link>
@@ -325,7 +276,7 @@ const Navigation = () => {
                     </motion.div>
                 )}
             </AnimatePresence>
-        </motion.nav>
+        </nav>
     )
 }
 

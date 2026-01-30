@@ -83,21 +83,20 @@ const Hero = () => {
                         </p>
 
                         {/* CTA Buttons */}
-                        <div className="flex flex-wrap gap-10">
-                            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                        <div className="flex flex-wrap gap-6 lg:gap-8">
+                            <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
                                 <Link
                                     to="/portfolio/residential"
-                                    className="inline-flex items-center justify-center px-16 py-6 bg-[#c9a961] hover:bg-white text-black font-bold transition-all duration-500 text-[14px] uppercase tracking-[0.3em] relative overflow-hidden group shadow-2xl"
+                                    className="inline-flex items-center justify-center px-12 lg:px-14 py-5 lg:py-6 bg-[#b89550] text-[#0a0a0a] font-bold transition-all duration-300 text-[12px] lg:text-[13px] uppercase tracking-[0.3em] shadow-2xl hover:bg-white"
                                     style={{ fontFamily: "'Inter', sans-serif" }}
                                 >
-                                    <span className="relative z-10">View Portfolio</span>
-                                    <motion.div className="absolute inset-0 bg-white translate-x-[-100%] group-hover:translate-x-0 transition-transform duration-500" />
+                                    View Portfolio
                                 </Link>
                             </motion.div>
-                            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                            <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
                                 <Link
                                     to="/contact"
-                                    className="inline-flex items-center justify-center px-16 py-6 border border-white/20 hover:border-white text-white font-bold transition-all duration-500 text-[14px] uppercase tracking-[0.3em] backdrop-blur-sm"
+                                    className="inline-flex items-center justify-center px-12 lg:px-14 py-5 lg:py-6 border border-white/30 hover:border-white text-white font-bold transition-all duration-300 text-[12px] lg:text-[13px] uppercase tracking-[0.3em] backdrop-blur-md"
                                     style={{ fontFamily: "'Inter', sans-serif" }}
                                 >
                                     Get Quote
