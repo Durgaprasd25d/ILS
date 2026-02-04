@@ -28,23 +28,39 @@ const BookConsultation = () => {
     const handleSubmit = async (e) => {
         e.preventDefault()
         setIsSubmitting(true)
+        setSubmitStatus(null)
         
-        // Simulate form submission
-        setTimeout(() => {
+        try {
+            const response = await fetch('http://localhost:5000/api/consultation', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(formData)
+            });
+
+            if (response.ok) {
+                setSubmitStatus('success')
+                // Reset form
+                setFormData({
+                    name: '',
+                    email: '',
+                    phone: '',
+                    serviceType: '',
+                    projectType: '',
+                    budget: '',
+                    timeline: '',
+                    message: ''
+                })
+            } else {
+                setSubmitStatus('error')
+            }
+        } catch (error) {
+            console.error('Submission Error:', error);
+            setSubmitStatus('error')
+        } finally {
             setIsSubmitting(false)
-            setSubmitStatus('success')
-            // Reset form
-            setFormData({
-                name: '',
-                email: '',
-                phone: '',
-                serviceType: '',
-                projectType: '',
-                budget: '',
-                timeline: '',
-                message: ''
-            })
-        }, 1500)
+        }
     }
 
     const fadeInUp = {
