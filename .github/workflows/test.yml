@@ -1,11 +1,14 @@
-name: Test Workflow
+name: Keep Backend Alive
 
 on:
-  push:
-  workflow_dispatch:
+  schedule:
+    - cron: "*/12 * * * *" # Runs every 12 minutes
+  workflow_dispatch: # Allows manual triggering
 
 jobs:
-  hello:
+  ping:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "Actions is working"
+      - name: Ping Render Backend
+        run: |
+          curl -f https://ils-85a4.onrender.com/health || echo "Ping failed, but that's okay for now"
