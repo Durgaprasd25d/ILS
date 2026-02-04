@@ -12,7 +12,7 @@ const Footer = () => {
         
         setStatus('loading')
         try {
-            const response = await fetch('http://localhost:5000/api/join-circle', {
+            const response = await fetch('https://ils-85a4.onrender.com/api/join-circle', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

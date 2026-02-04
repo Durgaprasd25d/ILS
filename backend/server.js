@@ -34,6 +34,11 @@ transporter.verify((error, success) => {
     }
 });
 
+// Health Check Endpoint (Keep-Alive)
+app.get('/health', (req, res) => {
+    res.status(200).send('Server is alive');
+});
+
 // 1. Consultation Form Endpoint
 app.post('/api/consultation', async (req, res) => {
     const { name, email, phone, serviceType, projectType, budget, timeline, message } = req.body;

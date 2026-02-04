@@ -22,7 +22,7 @@ const Contact = () => {
         setSubmitStatus(null)
         
         try {
-            const response = await fetch('http://localhost:5000/api/inquiry', {
+            const response = await fetch('https://ils-85a4.onrender.com/api/inquiry', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(formData)

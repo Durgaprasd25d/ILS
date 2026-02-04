@@ -31,7 +31,7 @@ const BookConsultation = () => {
         setSubmitStatus(null)
         
         try {
-            const response = await fetch('http://localhost:5000/api/consultation', {
+            const response = await fetch('https://ils-85a4.onrender.com/api/consultation', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
