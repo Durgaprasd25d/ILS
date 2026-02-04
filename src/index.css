@@ -13,3 +13,41 @@
   --luxury-black: #050505;
   --glass-bg: rgba(10, 10, 10, 0.7);
 }
+
+/* Premium Form Styling */
+select option {
+  background-color: #0a0a0a;
+  color: white;
+  padding: 12px;
+}
+
+select option:checked,
+select option:hover {
+  background-color: #c9a961;
+  color: black;
+}
+
+/* Custom scrollbar for select dropdowns */
+select::-webkit-scrollbar {
+  width: 8px;
+}
+
+select::-webkit-scrollbar-track {
+  background: #0a0a0a;
+}
+
+select::-webkit-scrollbar-thumb {
+  background: #c9a961;
+  border-radius: 4px;
+}
+
+select::-webkit-scrollbar-thumb:hover {
+  background: #b89851;
+}
+
+/* Smooth transitions for all inputs */
+input,
+select,
+textarea {
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}

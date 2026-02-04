@@ -32,10 +32,18 @@ const Navigation = () => {
             path: '#',
             dropdown: [
                 { name: 'Residential', path: '/portfolio/residential' },
+                { name: 'City View Penthouse', path: '/portfolio/penthouse' },
                 { name: 'Commercial / Hospitality', path: '/portfolio/commercial' }
             ]
         },
-        { name: 'Services', path: '/services' },
+        { 
+            name: 'Services', 
+            path: '#',
+            dropdown: [
+                { name: 'Residential Interiors', path: '/services/residential' },
+                { name: 'Commercial Interiors', path: '/services/commercial' }
+            ]
+        },
         { name: 'About', path: '/about' },
         { name: 'Contact', path: '/contact' }
     ]
@@ -119,7 +127,7 @@ const Navigation = () => {
 
                     {/* CTA Button */}
                     <Link
-                        to="/contact"
+                        to="/book-consultation"
                         className="ml-4 inline-flex items-center justify-center px-8 lg:px-10 py-3 lg:py-4 border border-[#c9a961]/40 text-white hover:bg-[#c9a961] hover:text-black hover:border-[#c9a961] transition-all duration-500 text-[13px] uppercase tracking-[0.2em] font-medium"
                         style={{ fontFamily: "'Inter', sans-serif" }}
                     >
@@ -266,7 +274,7 @@ const Navigation = () => {
                             className="mt-auto pt-10"
                         >
                             <Link
-                                to="/contact"
+                                to="/book-consultation"
                                 onClick={() => setIsOpen(false)}
                                 className="block w-full text-center py-6 border border-[#c9a961]/40 text-white font-medium uppercase tracking-[0.2em] text-[13px]"
                             >

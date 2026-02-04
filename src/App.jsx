@@ -2,9 +2,16 @@ import { BrowserRouter, Routes, Route } from 'react-router'
 import Home from './pages/Home'
 import PortfolioResidential from './pages/PortfolioResidential'
 import PortfolioCommercial from './pages/PortfolioCommercial'
+import CityViewPenthouse from './pages/CityViewPenthouse'
+import PenthouseKitchen from './pages/PenthouseKitchen'
+import PenthouseBedroom from './pages/PenthouseBedroom'
+import ResidentialInteriors from './pages/ResidentialInteriors'
+import ElegantLivingRoom from './pages/ElegantLivingRoom'
+import CommercialInteriors from './pages/CommercialInteriors'
 import Services from './pages/Services'
 import About from './pages/About'
 import Contact from './pages/Contact'
+import BookConsultation from './pages/BookConsultation'
 import Navigation from './components/Navigation'
 import Footer from './components/Footer'
 
@@ -21,11 +28,24 @@ function App() {
           <main className="flex-grow">
             <Routes>
               <Route path="/" element={<Home />} />
+              
+              {/* Portfolio Routes */}
               <Route path="/portfolio/residential" element={<PortfolioResidential />} />
               <Route path="/portfolio/commercial" element={<PortfolioCommercial />} />
-              {/* <Route path="/services" element={<Services />} /> */}
-              {/* <Route path="/about" element={<About />} /> */}
-              {/* <Route path="/contact" element={<Contact />} /> */}
+              <Route path="/portfolio/penthouse" element={<CityViewPenthouse />} />
+              <Route path="/portfolio/penthouse/kitchen" element={<PenthouseKitchen />} />
+              <Route path="/portfolio/penthouse/bedroom" element={<PenthouseBedroom />} />
+              
+              {/* Services Routes */}
+              <Route path="/services/residential" element={<ResidentialInteriors />} />
+              <Route path="/services/residential/living-room" element={<ElegantLivingRoom />} />
+              <Route path="/services/commercial" element={<CommercialInteriors />} />
+              
+              {/* Other Pages */}
+              <Route path="/book-consultation" element={<BookConsultation />} />
+              <Route path="/services" element={<Services />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/contact" element={<Contact />} />
             </Routes>
           </main>
           
