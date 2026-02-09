@@ -12,7 +12,7 @@ const Footer = () => {
         
         setStatus('loading')
         try {
-            const response = await fetch('https://ils-85a4.onrender.com/api/join-circle', {
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/api/join-circle`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

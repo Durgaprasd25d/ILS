@@ -10,17 +10,7 @@ const PORT = process.env.PORT || 5000;
 const allowedOrigins = (process.env.ALLOWED_ORIGINS || '').split(',').map(origin => origin.trim());
 
 const corsOptions = {
-    origin: function (origin, callback) {
-        // Allow requests with no origin (like mobile apps or curl requests)
-        if (!origin) return callback(null, true);
-        
-        if (allowedOrigins.length === 0 || allowedOrigins.includes(origin)) {
-            callback(null, true);
-        } else {
-            console.warn(`Blocked by CORS: ${origin}`);
-            callback(new Error('Not allowed by CORS'));
-        }
-    },
+    origin: true, // Reflects the requesting origin back (needed for credentials)
     methods: ['GET', 'POST', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization'],
     credentials: true,

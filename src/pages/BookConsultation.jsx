@@ -31,7 +31,7 @@ const BookConsultation = () => {
         setSubmitStatus(null)
         
         try {
-            const response = await fetch('https://ils-85a4.onrender.com/api/consultation', {
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/api/consultation`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
