@@ -28,10 +28,15 @@ app.use((req, res, next) => {
 
 // Nodemailer Transporter
 const transporter = nodemailer.createTransport({
-    service: 'gmail',
+    host: 'smtp.gmail.com',
+    port: 587,
+    secure: false, // must be false for 587
     auth: {
         user: process.env.APP_MAIL,
         pass: process.env.APP_PASSWORD
+    },
+    tls: {
+        rejectUnauthorized: false // Helps with some network environments
     }
 });
 
