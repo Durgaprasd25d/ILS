@@ -99,7 +99,7 @@ const ResidentialInteriors = () => {
                             <div className="relative aspect-[16/9] overflow-hidden bg-white/5 mb-10">
                                 <img 
                                     src={livingRoomImg} 
-                                    alt="Elegant Living Room" 
+                                    alt="The Meridian Residence" 
                                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000"
                                 />
                                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
@@ -110,11 +110,11 @@ const ResidentialInteriors = () => {
                                         Residential Project
                                     </p>
                                     <h3 className="text-[32px] lg:text-[48px] font-normal group-hover:text-[#c9a961] transition-colors" style={{ fontFamily: "'Playfair Display', serif" }}>
-                                        Elegant Living Room
+                                        The Meridian Residence
                                     </h3>
                                 </div>
                                 <div className="text-white/60 group-hover:text-white text-[14px] uppercase tracking-[0.3em] transition-colors" style={{ fontFamily: "'Inter', sans-serif" }}>
-                                    View Project →
+                                    Explore the Residence →
                                 </div>
                             </div>
                         </Link>

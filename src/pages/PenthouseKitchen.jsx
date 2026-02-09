@@ -29,7 +29,7 @@ const PenthouseKitchen = () => {
                             Culinary Excellence
                         </p>
                         <h1 className="text-[56px] lg:text-[96px] font-normal leading-[0.95] mb-8" style={{ fontFamily: "'Playfair Display', serif" }}>
-                            Sophisticated Kitchen
+                            The Skyline Penthouse Kitchen
                         </h1>
                     </motion.div>
 
@@ -42,7 +42,7 @@ const PenthouseKitchen = () => {
                     >
                         <img 
                             src={kitchenImg} 
-                            alt="Sophisticated Modern Kitchen" 
+                            alt="The Skyline Penthouse Kitchen" 
                             className="w-full h-full object-cover"
                         />
                     </motion.div>

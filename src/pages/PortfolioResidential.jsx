@@ -11,15 +11,15 @@ import img11 from '../assets/image-11.jpg'
 import img12 from '../assets/image-12.jpg'
 
 const portfolioItems = [
-    { id: 4, src: img04, title: 'Luxury Living Room', category: 'Apartment' },
-    { id: 5, src: img05, title: 'Luxury Living Room', category: 'Penthouse' },
-    { id: 6, src: img06, title: 'Master Bedroom', category: 'Residential' },
-    { id: 7, src: img07, title: 'Guest Bedroom', category: 'Residential' },
-    { id: 8, src: img08, title: 'Modern Kitchen', category: 'Culinary Space' },
-    { id: 9, src: img09, title: 'Kitchen + Dining', category: 'Residential' },
-    { id: 10, src: img10, title: 'Luxury Dining Room', category: 'Entertainment' },
-    { id: 11, src: img11, title: 'Walk-in Wardrobe', category: 'Lifestyle' },
-    { id: 12, src: img12, title: 'Luxury Bathroom', category: 'Spa Area' }
+    { id: 4, src: img04, title: 'The Meridian Residence', category: 'Apartment' },
+    { id: 5, src: img05, title: 'The Meridian Residence', category: 'Penthouse' },
+    { id: 6, src: img06, title: 'The Meridian Bedroom', category: 'Residential' },
+    { id: 7, src: img07, title: 'Private Guest Suite', category: 'Residential' },
+    { id: 8, src: img08, title: 'The Horizon Kitchen', category: 'Culinary Space' },
+    { id: 9, src: img09, title: 'The Skyline Dining Suite', category: 'Residential' },
+    { id: 10, src: img10, title: 'The Grand Entertainment Hall', category: 'Entertainment' },
+    { id: 11, src: img11, title: 'The Atelier Wardrobe', category: 'Private Dressing Suite' },
+    { id: 12, src: img12, title: 'The Private Spa Sanctuary', category: 'Spa Area' }
 ]
 
 const PortfolioResidential = () => {
@@ -57,7 +57,7 @@ const PortfolioResidential = () => {
                         Redefining Living
                     </h1>
                     <p className="text-white/60 text-[18px] lg:text-[20px] max-w-2xl leading-relaxed font-light" style={{ fontFamily: "'Inter', sans-serif" }}>
-                        Refined living spaces designed for the discerning. Exploring the intersection of luxury, comfort, and timeless aesthetics.
+                        A residence shaped around evening light and panoramic city silence. Designed for hosting, intimacy, and sculptural calm. Refined living spaces designed for the discerning.
                     </p>
                 </motion.div>
 
@@ -104,7 +104,7 @@ const PortfolioResidential = () => {
                     className="mt-40 pt-20 border-t border-white/10 text-center"
                 >
                     <h2 className="text-[32px] lg:text-[56px] font-normal mb-12 text-white" style={{ fontFamily: "'Playfair Display', serif" }}>
-                        Interested in a bespoke <br />residential design?
+                        Begin a Private Consultation
                     </h2>
                     <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                         <Link

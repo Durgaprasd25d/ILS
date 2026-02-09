@@ -29,7 +29,7 @@ const PenthouseBedroom = () => {
                             Private Retreat
                         </p>
                         <h1 className="text-[56px] lg:text-[96px] font-normal leading-[0.95] mb-8" style={{ fontFamily: "'Playfair Display', serif" }}>
-                            Serene Master Bedroom
+                            The Meridian Bedroom
                         </h1>
                     </motion.div>
 
@@ -42,7 +42,7 @@ const PenthouseBedroom = () => {
                     >
                         <img 
                             src={bedroomImg} 
-                            alt="Serene Master Bedroom" 
+                            alt="The Meridian Bedroom" 
                             className="w-full h-full object-cover"
                         />
                     </motion.div>

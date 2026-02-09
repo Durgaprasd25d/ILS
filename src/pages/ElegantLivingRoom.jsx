@@ -29,7 +29,7 @@ const ElegantLivingRoom = () => {
                             Residential Project
                         </p>
                         <h1 className="text-[56px] lg:text-[96px] font-normal leading-[0.95] mb-8" style={{ fontFamily: "'Playfair Display', serif" }}>
-                            Elegant Living Room
+                            The Meridian Residence
                         </h1>
                     </motion.div>
 
@@ -42,7 +42,7 @@ const ElegantLivingRoom = () => {
                     >
                         <img 
                             src={livingRoomImg} 
-                            alt="Elegant Luxury Living Room" 
+                            alt="The Meridian Residence" 
                             className="w-full h-full object-cover"
                         />
                     </motion.div>
@@ -59,7 +59,7 @@ const ElegantLivingRoom = () => {
                                 Where Luxury Meets Comfort
                             </h2>
                             <p className="text-white/70 text-[16px] lg:text-[18px] leading-relaxed font-light mb-6" style={{ fontFamily: "'Inter', sans-serif" }}>
-                                This elegant living room exemplifies our approach to residential design: sophisticated yet welcoming, luxurious yet livable.
+                                This exquisite residence exemplifies our approach to residential design: sophisticated yet welcoming, luxurious yet livable.
                             </p>
                             <p className="text-white/70 text-[16px] lg:text-[18px] leading-relaxed font-light" style={{ fontFamily: "'Inter', sans-serif" }}>
                                 Every element is carefully selected to create a warm, inviting atmosphere perfect for both entertaining guests and quiet evenings at home.

@@ -130,7 +130,7 @@ const CommercialInteriors = () => {
                             <ul className="space-y-6 text-white/70 text-[15px] leading-relaxed font-light" style={{ fontFamily: "'Inter', sans-serif" }}>
                                 <li className="flex items-start">
                                     <span className="text-[#c9a961] mr-4">—</span>
-                                    <span>Strategic space planning and workflow optimization</span>
+                                    <span>Spatial strategies that elevate workflow</span>
                                 </li>
                                 <li className="flex items-start">
                                     <span className="text-[#c9a961] mr-4">—</span>
@@ -150,7 +150,7 @@ const CommercialInteriors = () => {
                                 </li>
                                 <li className="flex items-start">
                                     <span className="text-[#c9a961] mr-4">—</span>
-                                    <span>Complete project management and execution</span>
+                                    <span>White-glove project execution</span>
                                 </li>
                             </ul>
                         </div>

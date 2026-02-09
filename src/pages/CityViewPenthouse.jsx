@@ -49,8 +49,8 @@ const CityViewPenthouse = () => {
                         <h1 className="text-[56px] lg:text-[108px] font-normal leading-[0.95] mb-8 max-w-4xl" style={{ fontFamily: "'Playfair Display', serif" }}>
                             City View Penthouse
                         </h1>
-                        <p className="text-white/70 text-[18px] lg:text-[22px] max-w-2xl leading-relaxed font-light" style={{ fontFamily: "'Inter', sans-serif" }}>
-                            Where urban sophistication meets timeless luxury. Expansive city skyline views framed by floor-to-ceiling glass, modern architecture, and premium finishes.
+                        <p className="text-white/70 text-[18px] lg:text-[22px] max-w-3xl leading-relaxed font-light" style={{ fontFamily: "'Inter', sans-serif" }}>
+                            A residence shaped around evening light and panoramic city silence. Designed for hosting, intimacy, and sculptural calm. Where urban sophistication meets timeless luxury.
                         </p>
                     </motion.div>
                 </div>
@@ -88,7 +88,7 @@ const CityViewPenthouse = () => {
                                     Culinary Excellence
                                 </p>
                                 <h3 className="text-[32px] lg:text-[40px] font-normal mb-4 group-hover:text-[#c9a961] transition-colors" style={{ fontFamily: "'Playfair Display', serif" }}>
-                                    Sophisticated Kitchen
+                                    The Skyline Penthouse Kitchen
                                 </h3>
                                 <p className="text-white/60 text-[15px] leading-relaxed font-light" style={{ fontFamily: "'Inter', sans-serif" }}>
                                     Modern modular design with premium finishes, quartz countertops, and ambient lighting creating the perfect culinary sanctuary.
@@ -111,7 +111,7 @@ const CityViewPenthouse = () => {
                                     Private Retreat
                                 </p>
                                 <h3 className="text-[32px] lg:text-[40px] font-normal mb-4 group-hover:text-[#c9a961] transition-colors" style={{ fontFamily: "'Playfair Display', serif" }}>
-                                    Serene Master Bedroom
+                                    The Meridian Bedroom
                                 </h3>
                                 <p className="text-white/60 text-[15px] leading-relaxed font-light" style={{ fontFamily: "'Inter', sans-serif" }}>
                                     Calm tones, plush bedding, and soft lighting converge to create a peaceful atmosphere for ultimate relaxation.

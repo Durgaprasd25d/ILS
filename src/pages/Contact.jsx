@@ -145,7 +145,7 @@ const Contact = () => {
                                     whileTap={{ scale: 0.98 }}
                                     className="w-full lg:w-fit px-20 py-6 bg-[#c9a961] hover:bg-white text-black font-bold transition-all duration-500 text-[13px] uppercase tracking-[0.4em] disabled:opacity-50"
                                 >
-                                    {isSubmitting ? 'SENDING...' : 'Send Inquiry'}
+                                    {isSubmitting ? 'SENDING...' : 'Begin Consultation'}
                                 </motion.button>
                                 {submitStatus === 'error' && <p className="text-red-500/60 text-[10px] tracking-[0.2em] uppercase">Something went wrong. Please try again.</p>}
                             </form>
@@ -163,8 +163,10 @@ const Contact = () => {
                         <div className="space-y-6">
                             <h3 className="text-[#c9a961] text-[10px] uppercase tracking-[0.5em] font-semibold">The Studio</h3>
                             <p className="text-[24px] lg:text-[32px] font-normal leading-relaxed text-white/80" style={{ fontFamily: "'Playfair Display', serif" }}>
-                                B-202, Biraja Complex, Bomikhal, <br />
-                                Cuttack Road, Bhubaneswar, Odisha, 751010
+                                B-202, Biraja Complex <br />
+                                Bomikhal, Cuttack Road <br />
+                                Bhubaneswar, Odisha – 751010 <br />
+                                India
                             </p>
                         </div>
                         <div className="space-y-6">

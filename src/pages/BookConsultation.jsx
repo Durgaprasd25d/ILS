@@ -335,7 +335,7 @@ const BookConsultation = () => {
                                     </div>
                                     <div>
                                         <h3 className="text-[22px] font-normal mb-3" style={{ fontFamily: "'Playfair Display', serif" }}>
-                                            Initial Consultation
+                                            Private Design Consultation
                                         </h3>
                                         <p className="text-white/60 text-[15px] leading-relaxed font-light" style={{ fontFamily: "'Inter', sans-serif" }}>
                                             We'll schedule a detailed discussion to understand your vision, lifestyle, and project requirements.
@@ -367,7 +367,7 @@ const BookConsultation = () => {
                                     </div>
                                     <div>
                                         <h3 className="text-[22px] font-normal mb-3" style={{ fontFamily: "'Playfair Display', serif" }}>
-                                            Detailed Proposal
+                                            Curated Design Proposal
                                         </h3>
                                         <p className="text-white/60 text-[15px] leading-relaxed font-light" style={{ fontFamily: "'Inter', sans-serif" }}>
                                             Receive a comprehensive proposal including scope, timeline, and investment details.

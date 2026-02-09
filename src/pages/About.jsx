@@ -13,10 +13,10 @@ const About = () => {
     }
 
     const stats = [
-        { label: 'Projects Delivered', value: '150+' },
-        { label: 'Awards Won', value: '25+' },
+        { label: 'Trusted by discerning clients', value: 'Elite' },
+        { label: 'Curated private residences', value: 'Bespoke' },
         { label: 'Studio Members', value: '12' },
-        { label: 'Years of Mastery', value: '15' }
+        { label: 'Award-inspired craftsmanship', value: 'Mastery' }
     ]
 
     return (
@@ -38,7 +38,7 @@ const About = () => {
                         </h1>
                         <div className="space-y-8 text-white/60 text-[18px] lg:text-[20px] leading-relaxed max-w-xl font-light" style={{ fontFamily: "'Inter', sans-serif" }}>
                             <p>
-                                At INTERIQ INTERIORS, we believe that design is a powerful tool for self-expression and functional refinement. Our studio specializes in creating bespoke environments that resonate with the architectural soul of a space.
+                                At INTERIQ INTERIORS, we define design as a precision tool for self-expression and functional refinement. Our studio executes bespoke environments that resonate with the architectural soul of a space.
                             </p>
                             <p>
                                 Every material choice and lighting element is a deliberate step toward an atmosphere of effortless luxury. We don't just design rooms; we curate experiences.
