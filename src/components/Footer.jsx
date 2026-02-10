@@ -1,6 +1,7 @@
 import { Link } from 'react-router'
 import { motion } from 'framer-motion'
 import { useState } from 'react'
+import logo from '../../logo.png'
 
 const Footer = () => {
     const [email, setEmail] = useState('')
@@ -39,19 +40,13 @@ const Footer = () => {
                 <div className="grid grid-cols-1 lg:grid-cols-4 gap-20">
                     {/* Brand Section */}
                     <div className="lg:col-span-2 space-y-10">
-                        <Link to="/" className="flex flex-col items-start group">
-                            <span 
-                                className="text-white text-3xl lg:text-5xl tracking-[0.1em] leading-none"
-                                style={{ fontFamily: "'Playfair Display', serif" }}
-                            >
-                                INTERIQ
-                            </span>
-                            <span 
-                                className="text-[#c9a961] text-[10px] lg:text-[11px] tracking-[0.5em] mt-1 uppercase font-light"
-                                style={{ fontFamily: "'Inter', sans-serif" }}
-                            >
-                                Interiors
-                            </span>
+                        <Link to="/" className="flex items-center group">
+                            <img
+                                src={logo}
+                                alt="Interiq Interiors"
+                                className="h-12 lg:h-16 w-auto"
+                                loading="lazy"
+                            />
                         </Link>
                         <p className="text-white/40 text-[18px] max-w-sm leading-relaxed font-light" style={{ fontFamily: "'Inter', sans-serif" }}>
                             INTERIQ INTERIORS designs private architectural environments defined by restraint, proportion, and permanence. Each commission is approached as a singular work of living design.

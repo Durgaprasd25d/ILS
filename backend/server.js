@@ -1,7 +1,13 @@
 const express = require('express');
 const nodemailer = require('nodemailer');
 const cors = require('cors');
+const dns = require('dns');
 require('dotenv').config();
+
+// Force IPv4 to avoid SMTP ENETUNREACH on IPv6-only DNS results in some hosts
+if (typeof dns.setDefaultResultOrder === 'function') {
+    dns.setDefaultResultOrder('ipv4first');
+}
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -27,16 +33,24 @@ app.use((req, res, next) => {
 });
 
 // Nodemailer Transporter
+const smtpHost = process.env.SMTP_HOST || 'smtp.gmail.com';
+const smtpPort = Number(process.env.SMTP_PORT || 587);
+const smtpSecure = process.env.SMTP_SECURE === 'true' || smtpPort === 465;
+
 const transporter = nodemailer.createTransport({
-    host: 'smtp.gmail.com',
-    port: 587,
-    secure: false, // must be false for 587
+    host: smtpHost,
+    port: smtpPort,
+    secure: smtpSecure,
     auth: {
         user: process.env.APP_MAIL,
         pass: process.env.APP_PASSWORD
     },
+    connectionTimeout: 10000,
+    greetingTimeout: 10000,
+    socketTimeout: 15000,
     tls: {
-        rejectUnauthorized: false // Helps with some network environments
+        rejectUnauthorized: false,
+        servername: smtpHost
     }
 });
 
@@ -296,6 +310,7 @@ app.post('/api/inquiry', async (req, res, next) => {
 
 // 5. Global Error Handler
 app.use((err, req, res, next) => {
+      console.error("FULL ERROR:", err);
     console.error(`[ERROR] ${new Date().toISOString()}:`, err.message);
     
     // Handle CORS errors specifically
@@ -307,11 +322,11 @@ app.use((err, req, res, next) => {
         });
     }
 
-    res.status(err.status || 500).json({
-        success: false,
-        message: 'An internal server error occurred',
-        error: process.env.NODE_ENV === 'production' ? 'INTERNAL_ERROR' : err.message
-    });
+     res.status(err.status || 500).json({
+    success: false,
+    message: err.message,
+    stack: err.stack,
+  });
 });
 
 app.listen(PORT, () => {
