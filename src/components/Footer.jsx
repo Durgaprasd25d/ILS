@@ -105,9 +105,9 @@ const Footer = () => {
                         <p className="tracking-widest opacity-60">B-202, BIRAJA COMPLEX <br /> BOMIKHAL, CUTTACK ROAD <br /> BHUBANESWAR, ODISHA – 751010 <br /> INDIA</p>
                     </div>
                     <div className="flex gap-10">
-                        <a href="https://wa.me/917008951964" target="_blank" rel="noopener noreferrer" className="hover:text-[#c9a961] transition-colors uppercase">PHONE</a>
                         <a href="https://www.instagram.com/interiqinteriors?igsh=MWYzcDdpOWpjdzh1bQ%3D%3D&utm_source=qr" target="_blank" rel="noopener noreferrer" className="hover:text-[#c9a961] transition-colors uppercase">INSTAGRAM</a>
                         <a href="https://www.facebook.com/profile.php?id=61587270160802" target="_blank" rel="noopener noreferrer" className="hover:text-[#c9a961] transition-colors uppercase">FACEBOOK</a>
+                        <a href="https://wa.me/917008951964" target="_blank" rel="noopener noreferrer" className="hover:text-[#c9a961] transition-colors uppercase">WHATSAPP</a>
                     </div>
                 </div>
             </div>
