@@ -41,10 +41,11 @@ const transporter = nodemailer.createTransport({
     host: smtpHost,
     port: smtpPort,
     secure: smtpSecure,
-    auth: {
-        user: process.env.APP_MAIL,
-        pass: process.env.APP_PASSWORD
-    },
+   auth: {
+  user: "interiqinteriors@gmail.com",
+  pass: "lemg tadg wfhy auhk"
+}
+,
     connectionTimeout: 10000,
     greetingTimeout: 10000,
     socketTimeout: 15000,
