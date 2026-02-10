@@ -145,7 +145,7 @@ const BookConsultation = () => {
                                             onChange={handleChange}
                                             required
                                             className={inputClasses}
-                                            placeholder="John Doe"
+                                            placeholder="Arjun Sharma"
                                             style={{ fontFamily: "'Inter', sans-serif" }}
                                         />
                                     </div>
@@ -160,7 +160,7 @@ const BookConsultation = () => {
                                             onChange={handleChange}
                                             required
                                             className={inputClasses}
-                                            placeholder="john@example.com"
+                                            placeholder="arjun@example.com"
                                             style={{ fontFamily: "'Inter', sans-serif" }}
                                         />
                                     </div>
@@ -178,7 +178,7 @@ const BookConsultation = () => {
                                         onChange={handleChange}
                                         required
                                         className={inputClasses}
-                                        placeholder="+1 (555) 123-4567"
+                                        placeholder="+91 70089 51964"
                                         style={{ fontFamily: "'Inter', sans-serif" }}
                                     />
                                 </div>
@@ -385,11 +385,13 @@ const BookConsultation = () => {
                             <div className="space-y-4 text-white/60 text-[15px] font-light" style={{ fontFamily: "'Inter', sans-serif" }}>
                                 <p>
                                     <span className="text-white/40 uppercase text-[12px] tracking-[0.2em] block mb-2">Email</span>
-                                    info@interiqinteriors.com
+                                    interiqinteriors@gmail.com
+
+
                                 </p>
                                 <p>
                                     <span className="text-white/40 uppercase text-[12px] tracking-[0.2em] block mb-2">Phone</span>
-                                    +1 (555) 123-4567
+                                    +91 7008951964
                                 </p>
                                 <p>
                                     <span className="text-white/40 uppercase text-[12px] tracking-[0.2em] block mb-2">Office Hours</span>

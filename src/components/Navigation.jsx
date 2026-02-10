@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from 'react'
 import { Link, useLocation } from 'react-router'
 import { motion, AnimatePresence } from 'framer-motion'
 import headerBg from '../assets/headerbgimage.jpeg'
-import brandLogo from '../assets/logo.png'
+import brandLogo from '../../logo.png'
 
 const Navigation = () => {
     const [isOpen, setIsOpen] = useState(false)
@@ -64,7 +64,7 @@ const Navigation = () => {
                     <img 
                         src={brandLogo} 
                         alt="INTERIQ" 
-                        className="h-10 lg:h-12 w-auto object-contain brightness-110 contrast-110 hover:scale-105 transition-transform duration-500"
+                        className="h-14 lg:h-24 w-auto object-contain brightness-110 contrast-110 hover:scale-105 transition-transform duration-500"
                     />
                 </Link>
 

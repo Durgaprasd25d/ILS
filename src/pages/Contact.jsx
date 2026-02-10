@@ -110,7 +110,7 @@ const Contact = () => {
                                             onChange={handleChange}
                                             required
                                             className="w-full bg-transparent border-b border-white/10 py-4 focus:border-[#c9a961] outline-none transition-all placeholder:text-white/10" 
-                                            placeholder="Your Name" 
+                                            placeholder="Aarav Singh" 
                                         />
                                     </div>
                                     <div className="space-y-2 group">
@@ -122,7 +122,7 @@ const Contact = () => {
                                             onChange={handleChange}
                                             required
                                             className="w-full bg-transparent border-b border-white/10 py-4 focus:border-[#c9a961] outline-none transition-all placeholder:text-white/10" 
-                                            placeholder="your@email.com" 
+                                            placeholder="aarav@singh.com" 
                                         />
                                     </div>
                                 </div>
@@ -181,7 +181,7 @@ const Contact = () => {
                             <div className="flex flex-wrap gap-12 text-[11px] tracking-[0.3em] font-bold text-white/40">
                                 <a href="https://www.instagram.com/interiqinteriors?igsh=MWYzcDdpOWpjdzh1bQ%3D%3D&utm_source=qr" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">INSTAGRAM</a>
                                 <a href="https://wa.me/917008951964" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">WHATSAPP</a>
-                                <span className="hover:text-white cursor-pointer transition-colors">LINKEDIN</span>
+                                <a href="https://www.facebook.com/profile.php?id=61587270160802" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">FACEBOOK</a>
                             </div>
                         </div>
                     </motion.div>
