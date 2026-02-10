@@ -180,7 +180,8 @@ const Contact = () => {
                             <h3 className="text-[#c9a961] text-[10px] uppercase tracking-[0.5em] font-semibold">Digital Presence</h3>
                             <div className="flex flex-wrap gap-12 text-[11px] tracking-[0.3em] font-bold text-white/40">
                                 <a href="https://www.instagram.com/interiqinteriors?igsh=MWYzcDdpOWpjdzh1bQ%3D%3D&utm_source=qr" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">INSTAGRAM</a>
-                                  <a href="https://www.facebook.com/profile.php?id=61587270160802" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">FACEBOOK</a>
+  <a href="https://www.facebook.com/profile.php?id=61587270160802" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">FACEBOOK</a>
+
                                 <a href="https://wa.me/917008951964" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">WHATSAPP</a>
                               
                             </div>
