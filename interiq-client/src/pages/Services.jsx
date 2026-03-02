@@ -3,6 +3,7 @@ import { Link } from 'react-router'
 import img14 from '../assets/image-14.jpg'
 import img15 from '../assets/image-15.jpg'
 import img17 from '../assets/image-17.jpg'
+import SEO from '../components/SEO';
 
 const serviceItems = [
     {
@@ -31,6 +32,10 @@ const serviceItems = [
 const Services = () => {
     return (
         <div className="pt-24 lg:pt-32 bg-black min-h-screen text-white">
+            <SEO 
+                title="Our Services | Luxury Interior Design Bhubaneswar | INTERIQ" 
+                description="Explore the holistic interior design services of INTERIQ Interiors, ranging from residential master-planning to high-performance commercial environments in Odisha." 
+            />
             <div className="w-full px-8 lg:px-20 py-16 max-w-[1800px] mx-auto">
                 {/* Header */}
                 <motion.div 

@@ -1,11 +1,16 @@
 import { motion } from 'framer-motion'
 import { Link } from 'react-router'
 import kitchenImg from '../assets/sophisticated-kitchen.png'
+import SEO from '../components/SEO';
 
 const PenthouseKitchen = () => {
     return (
 
             <div className="bg-black min-h-screen text-white pt-24 lg:pt-32">
+                <SEO 
+                    title="Skyline Penthouse Kitchen | Luxury Modular Kitchen Design Bhubaneswar" 
+                    description="A sophisticated modular kitchen design featuring white quartz countertops, custom cabinetry, and state-of-the-art appliances at the City View Penthouse." 
+                />
                 <div className="max-w-[1800px] mx-auto px-8 lg:px-20">
                     {/* Breadcrumb */}
                     <motion.div

@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
 import { Link } from 'react-router'
 import commercialImg from '../assets/commercial-interior.png'
+import SEO from '../components/SEO';
 
 const CommercialInteriors = () => {
     const fadeInUp = {
@@ -15,6 +16,10 @@ const CommercialInteriors = () => {
     return (
 
             <div className="bg-black min-h-screen text-white pt-24 lg:pt-32">
+                <SEO 
+                    title="Commercial Interiors | Luxury Office Design Bhubaneswar | INTERIQ" 
+                    description="Elevate your business with INTERIQ's premium commercial interior design in Bhubaneswar. We create high-performance workspaces, retail environments, and hospitality designs." 
+                />
                 <div className="max-w-[1800px] mx-auto px-8 lg:px-20">
                     {/* Hero Section */}
                     <motion.div

@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import axios from 'axios'
 import { motion } from 'framer-motion'
 import { Link } from 'react-router'
+import SEO from '../components/SEO';
 
 const BookConsultation = () => {
     const [content, setContent] = useState(null)
@@ -116,6 +117,10 @@ const BookConsultation = () => {
 
     return (
         <div className="bg-black min-h-screen text-white pt-24 lg:pt-32">
+            <SEO 
+                title="Book a Consultation | Luxury Interior Design Bhubaneswar | INTERIQ" 
+                description="Schedule a private design consultation with INTERIQ Interiors. Share your vision for residential or commercial projects in Bhubaneswar and Odisha." 
+            />
             <div className="max-w-[1400px] mx-auto px-8 lg:px-20">
                 {/* Hero Section */}
                 <motion.div

@@ -1,11 +1,16 @@
 import { motion } from 'framer-motion'
 import { Link } from 'react-router'
+import SEO from '../components/SEO';
 import livingRoomImg from '../assets/elegant-living-room.png'
 
 const ElegantLivingRoom = () => {
     return (
 
             <div className="bg-black min-h-screen text-white pt-24 lg:pt-32">
+                <SEO 
+                    title="The Meridian Residence | Elegant Living Room Design Bhubaneswar" 
+                    description="Exquisite residential living room design at The Meridian Residence by INTERIQ, featuring a warm ambiance, premium furniture, and curated decor." 
+                />
                 <div className="max-w-[1800px] mx-auto px-8 lg:px-20">
                     {/* Breadcrumb */}
                     <motion.div

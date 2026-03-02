@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
 import { Link } from 'react-router'
 import livingRoomImg from '../assets/elegant-living-room.png'
+import SEO from '../components/SEO';
 
 const ResidentialInteriors = () => {
     const fadeInUp = {
@@ -15,6 +16,10 @@ const ResidentialInteriors = () => {
     return (
 
             <div className="bg-black min-h-screen text-white pt-24 lg:pt-32">
+                <SEO 
+                    title="Residential Interiors | Custom Home Design Bhubaneswar | INTERIQ" 
+                    description="Transform your home with INTERIQ's bespoke residential interior design in Bhubaneswar. We specialize in luxury living rooms, bedrooms, and modular kitchens." 
+                />
                 <div className="max-w-[1800px] mx-auto px-8 lg:px-20">
                     {/* Hero Section */}
                     <motion.div

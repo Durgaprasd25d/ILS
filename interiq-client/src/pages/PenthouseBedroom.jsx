@@ -1,11 +1,16 @@
 import { motion } from 'framer-motion'
 import { Link } from 'react-router'
 import bedroomImg from '../assets/serene-bedroom.png'
+import SEO from '../components/SEO';
 
 const PenthouseBedroom = () => {
     return (
 
             <div className="bg-black min-h-screen text-white pt-24 lg:pt-32">
+                <SEO 
+                    title="The Meridian Bedroom | Luxury Master Bedroom Design Bhubaneswar" 
+                    description="A serene master bedroom retreat at the City View Penthouse, designed for restful nights with a neutral color palette and layered lighting." 
+                />
                 <div className="max-w-[1800px] mx-auto px-8 lg:px-20">
                     {/* Breadcrumb */}
                     <motion.div

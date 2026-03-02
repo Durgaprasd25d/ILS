@@ -3,7 +3,7 @@ import { useParams, Link } from 'react-router';
 import { motion, useScroll } from 'framer-motion';
 import { ArrowLeft, Clock, Share2, Facebook, Twitter, Linkedin } from 'lucide-react';
 import axios from 'axios';
-import { Helmet } from 'react-helmet-async';
+import SEO from '../components/SEO';
 
 const BlogPost = () => {
     const { slug } = useParams();
@@ -42,10 +42,10 @@ const BlogPost = () => {
 
     return (
         <div className="bg-luxury-black pt-20">
-            <Helmet>
-                <title>{blog.metaTitle || blog.title} | INTERIQ</title>
-                <meta name="description" content={blog.metaDescription || "Read more about luxury interior design at interiqinteriors.com"} />
-            </Helmet>
+            <SEO 
+                title={`${blog.metaTitle || blog.title} | INTERIQ`} 
+                description={blog.metaDescription || "Read more about luxury interior design at interiqinteriors.com"} 
+            />
 
             {/* Reading progress bar */}
             <motion.div 

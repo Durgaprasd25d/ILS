@@ -3,7 +3,7 @@ import { Link } from 'react-router';
 import { motion } from 'framer-motion';
 import { ArrowUpRight, Search, Loader2 } from 'lucide-react';
 import axios from 'axios';
-import { Helmet } from 'react-helmet-async';
+import SEO from '../components/SEO';
 
 const BlogHome = () => {
     const [blogs, setBlogs] = useState([]);
@@ -31,10 +31,10 @@ const BlogHome = () => {
 
     return (
         <div className="pt-32 pb-20 bg-luxury-black">
-            <Helmet>
-                <title>The Journal | INTERIQ INTERIORS Bhubaneswar</title>
-                <meta name="description" content="Explore the latest trends in luxury interior design, modular kitchens, and architectural excellence in Odisha through our design journal." />
-            </Helmet>
+            <SEO 
+                title="The Journal | INTERIQ INTERIORS Bhubaneswar" 
+                description="Explore the latest trends in luxury interior design, modular kitchens, and architectural excellence in Odisha through our design journal." 
+            />
 
             <div className="container mx-auto px-6">
                 <header className="mb-20 text-center max-w-4xl mx-auto">

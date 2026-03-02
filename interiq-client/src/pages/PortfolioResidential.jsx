@@ -9,6 +9,7 @@ import img09 from '../assets/image-09.jpg'
 import img10 from '../assets/image-10.jpg'
 import img11 from '../assets/image-11.jpg'
 import img12 from '../assets/image-12.jpg'
+import SEO from '../components/SEO';
 
 const portfolioItems = [
     { id: 4, src: img04, title: 'The Meridian Residence', category: 'Apartment' },
@@ -43,6 +44,10 @@ const PortfolioResidential = () => {
 
     return (
         <div className="pt-24 lg:pt-32 bg-black min-h-screen text-white">
+            <SEO 
+                title="Residential Portfolio | Luxury Homes by INTERIQ Interiors Bhubaneswar" 
+                description="Explore our collection of bespoke residential interiors, including the Meridian series, luxury penthouses, and private estates curated by INTERIQ." 
+            />
             <div className="w-full px-8 lg:px-20 py-16 max-w-[1800px] mx-auto">
                 <motion.div 
                     initial={{ opacity: 0, y: 20 }}

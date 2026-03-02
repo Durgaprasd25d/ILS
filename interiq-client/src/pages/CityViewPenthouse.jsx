@@ -2,6 +2,7 @@ import { motion } from 'framer-motion'
 import { Link } from 'react-router'
 import penthouseHero from '../assets/city-penthouse-hero.png'
 import kitchenImg from '../assets/sophisticated-kitchen.png'
+import SEO from '../components/SEO';
 import bedroomImg from '../assets/serene-bedroom.png'
 
 const CityViewPenthouse = () => {
@@ -25,6 +26,10 @@ const CityViewPenthouse = () => {
     return (
 
             <div className="bg-black min-h-screen text-white">
+                <SEO 
+                    title="City View Penthouse | Luxury Residential Design Bhubaneswar" 
+                    description="Explore the City View Penthouse by INTERIQ Interiors. A masterclass in urban sophistication, featuring panoramic views and bespoke architectural detailing." 
+                />
                 {/* Hero Section */}
                 <div className="relative h-screen">
                     <motion.img 

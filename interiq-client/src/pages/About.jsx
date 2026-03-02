@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
 import img18 from '../assets/image-18.jpg'
 import img19 from '../assets/image-19.jpg'
+import SEO from '../components/SEO';
 
 const About = () => {
     const fadeUp = {
@@ -21,6 +22,10 @@ const About = () => {
 
     return (
         <div className="pt-24 lg:pt-32 bg-black min-h-screen text-white">
+            <SEO 
+                title="About INTERIQ | Luxury Interior Design Studio Bhubaneswar" 
+                description="INTERIQ INTERIORS is a premier interior design studio in Bhubaneswar, curated by elite craftsmanship and architectural detailing for bespoke environments." 
+            />
             <div className="w-full px-8 lg:px-20 py-16 max-w-[1800px] mx-auto">
                 {/* Intro Section */}
                 <div className="flex flex-col lg:flex-row gap-16 lg:gap-32 items-center mb-40">

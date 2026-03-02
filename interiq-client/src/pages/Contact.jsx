@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion'
 import { useState, useEffect } from 'react'
 import axios from 'axios'
-import { Helmet } from 'react-helmet-async'
+import SEO from '../components/SEO';
 import { Phone, Mail, MapPin, MessageSquare } from 'lucide-react'
 import img20 from '../assets/image-20.jpg'
 
@@ -82,12 +82,12 @@ const Contact = () => {
 
     return (
         <div className="pt-24 lg:pt-32 bg-black min-h-screen text-white">
-            <Helmet>
-                <title>Contact Us | Interior Designer in Bhubaneswar | INTERIQ Interiors</title>
-                <meta name="description" content="INTERIQ Interiors is a premium interior designer in Bhubaneswar offering luxury residential interiors, modular kitchens, and turnkey solutions across Odisha." />
-                <meta property="og:title" content="Contact Us | Interior Designer in Bhubaneswar | INTERIQ Interiors" />
-                <meta property="og:description" content="INTERIQ Interiors is a premium interior designer in Bhubaneswar offering luxury residential interiors, modular kitchens, and turnkey solutions across Odisha." />
-            </Helmet>
+            <SEO 
+                title="Contact Us | Interior Designer in Bhubaneswar | INTERIQ Interiors" 
+                description="INTERIQ Interiors is a premium interior designer in Bhubaneswar offering luxury residential interiors, modular kitchens, and turnkey solutions across Odisha." 
+                ogTitle="Contact Us | Interior Designer in Bhubaneswar | INTERIQ Interiors" 
+                ogDescription="INTERIQ Interiors is a premium interior designer in Bhubaneswar offering luxury residential interiors, modular kitchens, and turnkey solutions across Odisha." 
+            />
 
             {/* Dramatic Header */}
             <div className="relative h-[50vh] lg:h-[70vh] flex items-center justify-center overflow-hidden">

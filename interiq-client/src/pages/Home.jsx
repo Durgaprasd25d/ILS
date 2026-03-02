@@ -4,6 +4,7 @@ import img02 from '../assets/image-02.jpg'
 import img03 from '../assets/image-03.jpg'
 import { Link } from 'react-router'
 import { useState } from 'react'
+import SEO from '../components/SEO';
 
 const Home = () => {
     const fadeUp = {
@@ -39,6 +40,10 @@ const Home = () => {
 
     return (
         <div className="min-h-screen bg-[#050505] overflow-x-hidden">
+            <SEO 
+                title="INTERIQ Interiors | Luxury Interior Designer in Bhubaneswar | ODM Kitchens & Bespoke Homes" 
+                description="INTERIQ Interiors specializes in premium, bespoke interior design in Bhubaneswar, Odisha. We deliver unmatched luxury for residential and commercial spaces with a focus on ODM kitchens and turnkey solutions." 
+            />
             <Hero />
             
             {/* Feature Highlight Section 01 - Design Philosophy */}
