@@ -43,14 +43,18 @@ const Footer = () => {
                         <Link to="/" className="flex items-center group">
                             <img
                                 src={logo}
-                                alt="Interiq Interiors"
+                                alt="INTERIQ Interiors | Luxury Interior Designer in Bhubaneswar"
                                 className="h-12 lg:h-16 w-auto"
                                 loading="lazy"
                             />
                         </Link>
                         <p className="text-white/40 text-[18px] max-w-sm leading-relaxed font-light" style={{ fontFamily: "'Inter', sans-serif" }}>
-                            INTERIQ INTERIORS designs private architectural environments defined by restraint, proportion, and permanence. Each commission is approached as a singular work of living design.
+                            INTERIQ Interiors is a premier interior design studio specializing in luxury residential and turnkey solutions. We deliver excellence from concept to execution.
                         </p>
+                        <div className="space-y-4 pt-4 border-t border-white/5">
+                            <p className="text-[#c9a961] text-[13px] tracking-widest font-medium">INTERIQ Interiors Studio, Plot No. 123, Janpath, Bhubaneswar, Odisha</p>
+                            <p className="text-white/40 text-[14px]">+91 9437222340 | +91 9437222344 | 0674-4525580</p>
+                        </div>
                     </div>
                     
                     {/* Navigation */}
@@ -68,7 +72,7 @@ const Footer = () => {
                     {/* Newsletter/Circle */}
                     <div className="space-y-10">
                         <h4 className="text-[12px] uppercase tracking-[0.4em] font-semibold text-[#c9a961]">Join The Private Circle</h4>
-                        <p className="text-white/40 text-[13px] leading-relaxed font-light">Join our private circle for exclusive project insights and luxury design trends.</p>
+                        <p className="text-white/40 text-[13px] leading-relaxed font-light">Join our private circle for exclusive luxury design trends and project insights.</p>
                         <form onSubmit={handleJoin} className="space-y-4">
                             <div className="flex border-b border-white/10 pb-4 group focus-within:border-[#c9a961] transition-colors">
                                 <input 
@@ -102,12 +106,11 @@ const Footer = () => {
                 <div className="mt-32 pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8 text-[10px] tracking-[0.4em] font-semibold text-white/30 text-center md:text-left">
                     <div className="space-y-2">
                         <p>© 2026 INTERIQ INTERIORS. ALL RIGHTS RESERVED.</p>
-                        <p className="tracking-widest opacity-60">B-202, BIRAJA COMPLEX <br /> BOMIKHAL, CUTTACK ROAD <br /> BHUBANESWAR, ODISHA – 751010 <br /> INDIA</p>
                     </div>
                     <div className="flex gap-10">
-                        <a href="https://www.instagram.com/interiqinteriors?igsh=MWYzcDdpOWpjdzh1bQ%3D%3D&utm_source=qr" target="_blank" rel="noopener noreferrer" className="hover:text-[#c9a961] transition-colors uppercase">INSTAGRAM</a>
-                        <a href="https://www.facebook.com/profile.php?id=61587270160802" target="_blank" rel="noopener noreferrer" className="hover:text-[#c9a961] transition-colors uppercase">FACEBOOK</a>
-                        <a href="https://wa.me/917008951964" target="_blank" rel="noopener noreferrer" className="hover:text-[#c9a961] transition-colors uppercase">WHATSAPP</a>
+                        <a href="https://www.instagram.com/interiqinteriors" target="_blank" rel="noopener noreferrer" className="hover:text-[#c9a961] transition-colors uppercase">INSTAGRAM</a>
+                        <a href="https://www.facebook.com/interiqinteriors" target="_blank" rel="noopener noreferrer" className="hover:text-[#c9a961] transition-colors uppercase">FACEBOOK</a>
+                        <a href="https://wa.me/919437222344" target="_blank" rel="noopener noreferrer" className="hover:text-[#c9a961] transition-colors uppercase">WHATSAPP</a>
                     </div>
                 </div>
             </div>

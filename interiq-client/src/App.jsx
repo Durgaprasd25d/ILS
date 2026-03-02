@@ -12,6 +12,8 @@ import Services from './pages/Services'
 import About from './pages/About'
 import Contact from './pages/Contact'
 import BookConsultation from './pages/BookConsultation'
+import BlogHome from './pages/BlogHome'
+import BlogPost from './pages/BlogPost'
 import Navigation from './components/Navigation'
 import Footer from './components/Footer'
 
@@ -46,6 +48,8 @@ function App() {
               <Route path="/services" element={<Services />} />
               <Route path="/about" element={<About />} />
               <Route path="/contact" element={<Contact />} />
+              <Route path="/blog" element={<BlogHome />} />
+              <Route path="/blog/:slug" element={<BlogPost />} />
             </Routes>
           </main>
           

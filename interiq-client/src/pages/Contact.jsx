@@ -1,15 +1,36 @@
 import { motion } from 'framer-motion'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import axios from 'axios'
+import { Helmet } from 'react-helmet-async'
+import { Phone, Mail, MapPin, MessageSquare } from 'lucide-react'
 import img20 from '../assets/image-20.jpg'
 
 const Contact = () => {
+    const [content, setContent] = useState(null)
+    const [loading, setLoading] = useState(true)
+
+    useEffect(() => {
+        const fetchContent = async () => {
+            try {
+                const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/content/contact`)
+                if (response.data && response.data.sections) {
+                    setContent(response.data.sections)
+                }
+            } catch (error) {
+                console.error('Error fetching contact content:', error)
+            } finally {
+                setLoading(false)
+            }
+        }
+        fetchContent()
+    }, [])
     const [formData, setFormData] = useState({
         name: '',
         email: '',
         message: ''
     })
     const [isSubmitting, setIsSubmitting] = useState(false)
-    const [submitStatus, setSubmitStatus] = useState(null) // 'success' or 'error'
+    const [submitStatus, setSubmitStatus] = useState(null)
 
     const handleChange = (e) => {
         const { name, value } = e.target
@@ -51,8 +72,23 @@ const Contact = () => {
         }
     }
 
+    const contactDetails = {
+        phones: ["+91 9437222340", "+91 9437222344"],
+        office: "0674-4525580",
+        email: "info@interiq.in",
+        address: "INTERIQ Interiors Studio, Plot No. 123, Janpath, Bhubaneswar, Odisha",
+        whatsapp: "9437222344"
+    }
+
     return (
         <div className="pt-24 lg:pt-32 bg-black min-h-screen text-white">
+            <Helmet>
+                <title>Contact Us | Interior Designer in Bhubaneswar | INTERIQ Interiors</title>
+                <meta name="description" content="INTERIQ Interiors is a premium interior designer in Bhubaneswar offering luxury residential interiors, modular kitchens, and turnkey solutions across Odisha." />
+                <meta property="og:title" content="Contact Us | Interior Designer in Bhubaneswar | INTERIQ Interiors" />
+                <meta property="og:description" content="INTERIQ Interiors is a premium interior designer in Bhubaneswar offering luxury residential interiors, modular kitchens, and turnkey solutions across Odisha." />
+            </Helmet>
+
             {/* Dramatic Header */}
             <div className="relative h-[50vh] lg:h-[70vh] flex items-center justify-center overflow-hidden">
                 <motion.img 
@@ -60,7 +96,7 @@ const Contact = () => {
                     animate={{ scale: 1, opacity: 0.4 }}
                     transition={{ duration: 2 }}
                     src={img20} 
-                    alt="Contact Background" 
+                    alt="Interior Design Studio Bhubaneswar - INTERIQ Interiors Contact" 
                     className="absolute inset-0 w-full h-full object-cover grayscale-[30%]"
                 />
                 <div className="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black"></div>
@@ -70,10 +106,10 @@ const Contact = () => {
                     transition={{ duration: 1.2, delay: 0.5 }}
                     className="relative z-10 text-center px-8"
                 >
-                    <p className="text-[#c9a961] text-[10px] lg:text-[12px] uppercase tracking-[0.5em] mb-6 font-medium" style={{ fontFamily: "'Inter', sans-serif" }}>
+                    <p className="text-[#c9a961] text-[10px] lg:text-[12px] uppercase tracking-[0.5em] mb-6 font-medium font-inter">
                         Inquiry Portal
                     </p>
-                    <h1 className="text-[48px] lg:text-[100px] font-normal leading-tight" style={{ fontFamily: "'Playfair Display', serif" }}>
+                    <h1 className="text-[48px] lg:text-[100px] font-normal leading-tight font-playfair">
                         Let's Create <br />Something Timeless
                     </h1>
                 </motion.div>
@@ -110,7 +146,7 @@ const Contact = () => {
                                             onChange={handleChange}
                                             required
                                             className="w-full bg-transparent border-b border-white/10 py-4 focus:border-[#c9a961] outline-none transition-all placeholder:text-white/10" 
-                                            placeholder="Aarav Singh" 
+                                            placeholder="Your Name" 
                                         />
                                     </div>
                                     <div className="space-y-2 group">
@@ -122,7 +158,7 @@ const Contact = () => {
                                             onChange={handleChange}
                                             required
                                             className="w-full bg-transparent border-b border-white/10 py-4 focus:border-[#c9a961] outline-none transition-all placeholder:text-white/10" 
-                                            placeholder="aarav@singh.com" 
+                                            placeholder="your@email.com" 
                                         />
                                     </div>
                                 </div>
@@ -158,32 +194,59 @@ const Contact = () => {
                         whileInView="visible"
                         viewport={{ once: true }}
                         variants={fadeUp}
-                        className="space-y-20"
+                        className="space-y-16"
                     >
-                        <div className="space-y-6">
-                            <h3 className="text-[#c9a961] text-[10px] uppercase tracking-[0.5em] font-semibold">The Studio</h3>
-                            <p className="text-[24px] lg:text-[32px] font-normal leading-relaxed text-white/80" style={{ fontFamily: "'Playfair Display', serif" }}>
-                                B-202, Biraja Complex <br />
-                                Bomikhal, Cuttack Road <br />
-                                Bhubaneswar, Odisha – 751010 <br />
-                                India
+                        <div className="space-y-8">
+                            <h3 className="text-[#c9a961] text-[10px] uppercase tracking-[0.5em] font-semibold font-inter items-center flex gap-4">
+                                <MapPin className="w-4 h-4" /> The Studio
+                            </h3>
+                            <p className="text-[24px] lg:text-[32px] font-normal leading-relaxed text-white/80 font-playfair">
+                                {contactDetails.address.split(',').map((part, i) => (
+                                    <span key={i}>{part.trim()}{i < contactDetails.address.split(',').length - 1 && <br />}</span>
+                                ))}
                             </p>
                         </div>
-                        <div className="space-y-6">
-                            <h3 className="text-[#c9a961] text-[10px] uppercase tracking-[0.5em] font-semibold">Direct</h3>
-                            <div className="space-y-3">
-                                <p className="text-[20px] lg:text-[24px] text-white/60 hover:text-white transition-colors cursor-pointer font-light">+91 7008951964</p>
-                                <p className="text-[20px] lg:text-[24px] text-white/60 hover:text-white transition-colors cursor-pointer font-light">interiqinteriors@gmail.com</p>
+
+                        <div className="space-y-8">
+                            <h3 className="text-[#c9a961] text-[10px] uppercase tracking-[0.5em] font-semibold font-inter items-center flex gap-4">
+                                <Phone className="w-4 h-4" /> Direct
+                            </h3>
+                            <div className="space-y-4">
+                                {contactDetails.phones.map((phone, i) => (
+                                    <a key={i} href={`tel:${phone.replace(/\s+/g, '')}`} className="block text-[24px] lg:text-[28px] text-white/60 hover:text-[#c9a961] transition-colors font-light font-inter">
+                                        📞 {phone}
+                                    </a>
+                                ))}
+                                <a href={`tel:${contactDetails.office}`} className="block text-[24px] lg:text-[28px] text-white/60 hover:text-[#c9a961] transition-colors font-light font-inter">
+                                    ☎ {contactDetails.office}
+                                </a>
                             </div>
                         </div>
-                        <div className="space-y-6 pt-10 border-t border-white/5">
-                            <h3 className="text-[#c9a961] text-[10px] uppercase tracking-[0.5em] font-semibold">Digital Presence</h3>
-                            <div className="flex flex-wrap gap-12 text-[11px] tracking-[0.3em] font-bold text-white/40">
-                                <a href="https://www.instagram.com/interiqinteriors?igsh=MWYzcDdpOWpjdzh1bQ%3D%3D&utm_source=qr" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">INSTAGRAM</a>
-  <a href="https://www.facebook.com/profile.php?id=61587270160802" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">FACEBOOK</a>
 
-                                <a href="https://wa.me/917008951964" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">WHATSAPP</a>
-                              
+                        <div className="space-y-8">
+                            <h3 className="text-[#c9a961] text-[10px] uppercase tracking-[0.5em] font-semibold font-inter items-center flex gap-4">
+                                <Mail className="w-4 h-4" /> Email
+                            </h3>
+                            <a href={`mailto:${contactDetails.email}`} className="text-[20px] lg:text-[28px] text-white/60 hover:text-[#c9a961] transition-colors font-light font-inter break-all">
+                                {contactDetails.email}
+                            </a>
+                        </div>
+
+                        <div className="pt-10 space-y-8 border-t border-white/5">
+                            <h3 className="text-[#c9a961] text-[10px] uppercase tracking-[0.5em] font-semibold font-inter">Connect</h3>
+                            <div className="flex flex-col gap-8">
+                                <a 
+                                    href={`https://wa.me/91${contactDetails.whatsapp}`}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="flex items-center gap-4 px-10 py-5 bg-[#25D366] text-white rounded-full w-fit hover:scale-105 transition-transform font-bold tracking-widest text-sm"
+                                >
+                                    <MessageSquare className="w-5 h-5 fill-white" /> WHATSAPP US
+                                </a>
+                                <div className="flex gap-12 text-[11px] tracking-[0.3em] font-bold text-white/40 font-inter">
+                                    <a href="https://www.instagram.com/interiqinteriors" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors uppercase">INSTAGRAM</a>
+                                    <a href="https://www.facebook.com/interiqinteriors" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors uppercase">FACEBOOK</a>
+                                </div>
                             </div>
                         </div>
                     </motion.div>

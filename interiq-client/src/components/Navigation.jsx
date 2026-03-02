@@ -45,6 +45,7 @@ const Navigation = () => {
             ]
         },
         { name: 'About', path: '/about' },
+        { name: 'The Journal', path: '/blog' },
         { name: 'Contact', path: '/contact' }
     ]
 

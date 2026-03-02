@@ -1,0 +1,54 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #c9a961;
+  --color-primary-dark: #b89851;
+  --color-luxury-black: #050505;
+  --color-luxury-gray: #1a1a1a;
+
+  --font-inter: "Inter", sans-serif;
+  --font-playfair: "Playfair Display", serif;
+}
+
+@layer base {
+  body {
+    @apply font-inter bg-luxury-black text-white antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-playfair;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  @apply bg-luxury-black;
+}
+::-webkit-scrollbar-thumb {
+  @apply bg-primary/20 hover:bg-primary/40 rounded-full transition-colors;
+}
+
+/* Quill Editor Styles */
+.ql-container.ql-snow {
+  @apply border-white/10! bg-white/5! rounded-b-lg!;
+}
+.ql-toolbar.ql-snow {
+  @apply border-white/10! bg-white/5! rounded-t-lg!;
+}
+.ql-snow .ql-stroke {
+  @apply stroke-white!;
+}
+.ql-snow .ql-fill {
+  @apply fill-white!;
+}
+.ql-editor {
+  @apply min-h-[300px] text-lg leading-relaxed;
+}

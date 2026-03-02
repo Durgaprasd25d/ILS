@@ -1,8 +1,27 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import axios from 'axios'
 import { motion } from 'framer-motion'
 import { Link } from 'react-router'
 
 const BookConsultation = () => {
+    const [content, setContent] = useState(null)
+    const [loading, setLoading] = useState(true)
+
+    useEffect(() => {
+        const fetchContent = async () => {
+            try {
+                const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/content/consultation`)
+                if (response.data && response.data.sections) {
+                    setContent(response.data.sections)
+                }
+            } catch (error) {
+                console.error('Error fetching consultation content:', error)
+            } finally {
+                setLoading(false)
+            }
+        }
+        fetchContent()
+    }, [])
     const [formData, setFormData] = useState({
         name: '',
         email: '',
@@ -76,6 +95,25 @@ const BookConsultation = () => {
     
     const selectClasses = "w-full bg-black/40 backdrop-blur-sm border border-white/20 text-white px-6 py-5 text-[16px] font-light focus:border-[#c9a961] focus:bg-black/60 focus:outline-none transition-all duration-300 cursor-pointer appearance-none bg-[url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20fill%3D%22none%22%20viewBox%3D%220%200%2020%2020%22%3E%3Cpath%20stroke%3D%22%23c9a961%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%20stroke-width%3D%221.5%22%20d%3D%22M6%208l4%204%204-4%22%2F%3E%3C%2Fsvg%3E')] bg-[length:1.5rem] bg-[right_1rem_center] bg-no-repeat pr-12"
 
+    const hero = content?.hero || {
+        title: "Book a Consultation",
+        subtitle: "Share your vision with us, and we'll craft a personalized approach to transform your space into something extraordinary.",
+        label: "Begin Your Journey"
+    }
+
+    const steps = content?.steps?.length > 0 ? content.steps : [
+        { title: "Private Design Consultation", desc: "We'll schedule a detailed discussion to understand your vision, lifestyle, and project requirements." },
+        { title: "Concept Development", desc: "Our team will create initial concepts, mood boards, and design proposals tailored to your project." },
+        { title: "Curated Design Proposal", desc: "Receive a comprehensive proposal including scope, timeline, and investment details." }
+    ]
+
+    const otherWays = content?.otherWays || {
+        title: "Other Ways to Reach Us",
+        email: "interiqinteriors@gmail.com",
+        phone: "+91 7008951964",
+        hours: "Monday - Friday, 9:00 AM - 6:00 PM"
+    }
+
     return (
         <div className="bg-black min-h-screen text-white pt-24 lg:pt-32">
             <div className="max-w-[1400px] mx-auto px-8 lg:px-20">
@@ -86,14 +124,14 @@ const BookConsultation = () => {
                     transition={{ duration: 1 }}
                     className="text-center mb-24"
                 >
-                    <p className="text-[#c9a961] text-[11px] lg:text-[13px] uppercase tracking-[0.6em] font-semibold mb-8" style={{ fontFamily: "'Inter', sans-serif" }}>
-                        Begin Your Journey
+                    <p className="text-[#c9a961] text-[11px] lg:text-[13px] uppercase tracking-[0.6em] font-semibold mb-8 font-inter">
+                        {hero.label}
                     </p>
-                    <h1 className="text-[64px] lg:text-[120px] font-normal leading-[0.9] mb-10" style={{ fontFamily: "'Playfair Display', serif" }}>
-                        Book a Consultation
+                    <h1 className="text-[64px] lg:text-[120px] font-normal leading-[0.9] mb-10 font-playfair">
+                        {hero.title}
                     </h1>
-                    <p className="text-white/60 text-[17px] lg:text-[20px] max-w-2xl mx-auto leading-relaxed font-light" style={{ fontFamily: "'Inter', sans-serif" }}>
-                        Share your vision with us, and we'll craft a personalized approach to transform your space into something extraordinary.
+                    <p className="text-white/60 text-[17px] lg:text-[20px] max-w-2xl mx-auto leading-relaxed font-light font-inter">
+                        {hero.subtitle}
                     </p>
                 </motion.div>
 
@@ -323,79 +361,47 @@ const BookConsultation = () => {
                         transition={{ delay: 0.2 }}
                         className="lg:pl-16 order-1 lg:order-2"
                     >
-                        <h2 className="text-[36px] lg:text-[48px] font-normal mb-10" style={{ fontFamily: "'Playfair Display', serif" }}>
+                        <h2 className="text-[36px] lg:text-[48px] font-normal mb-10 font-playfair">
                             What to Expect
                         </h2>
 
                         <div className="space-y-10">
-                            <div>
-                                <div className="flex items-start gap-6 mb-4">
-                                    <div className="w-12 h-12 border border-[#c9a961] rounded-full flex items-center justify-center text-[#c9a961] text-[18px] font-light flex-shrink-0">
-                                        01
-                                    </div>
-                                    <div>
-                                        <h3 className="text-[22px] font-normal mb-3" style={{ fontFamily: "'Playfair Display', serif" }}>
-                                            Private Design Consultation
-                                        </h3>
-                                        <p className="text-white/60 text-[15px] leading-relaxed font-light" style={{ fontFamily: "'Inter', sans-serif" }}>
-                                            We'll schedule a detailed discussion to understand your vision, lifestyle, and project requirements.
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div>
-                                <div className="flex items-start gap-6 mb-4">
-                                    <div className="w-12 h-12 border border-[#c9a961] rounded-full flex items-center justify-center text-[#c9a961] text-[18px] font-light flex-shrink-0">
-                                        02
-                                    </div>
-                                    <div>
-                                        <h3 className="text-[22px] font-normal mb-3" style={{ fontFamily: "'Playfair Display', serif" }}>
-                                            Concept Development
-                                        </h3>
-                                        <p className="text-white/60 text-[15px] leading-relaxed font-light" style={{ fontFamily: "'Inter', sans-serif" }}>
-                                            Our team will create initial concepts, mood boards, and design proposals tailored to your project.
-                                        </p>
+                            {steps.map((step, idx) => (
+                                <div key={idx}>
+                                    <div className="flex items-start gap-6 mb-4">
+                                        <div className="w-12 h-12 border border-[#c9a961] rounded-full flex items-center justify-center text-[#c9a961] text-[18px] font-light flex-shrink-0 font-inter">
+                                            0{idx + 1}
+                                        </div>
+                                        <div>
+                                            <h3 className="text-[22px] font-normal mb-3 font-playfair">
+                                                {step.title}
+                                            </h3>
+                                            <p className="text-white/60 text-[15px] leading-relaxed font-light font-inter">
+                                                {step.desc}
+                                            </p>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-
-                            <div>
-                                <div className="flex items-start gap-6 mb-4">
-                                    <div className="w-12 h-12 border border-[#c9a961] rounded-full flex items-center justify-center text-[#c9a961] text-[18px] font-light flex-shrink-0">
-                                        03
-                                    </div>
-                                    <div>
-                                        <h3 className="text-[22px] font-normal mb-3" style={{ fontFamily: "'Playfair Display', serif" }}>
-                                            Curated Design Proposal
-                                        </h3>
-                                        <p className="text-white/60 text-[15px] leading-relaxed font-light" style={{ fontFamily: "'Inter', sans-serif" }}>
-                                            Receive a comprehensive proposal including scope, timeline, and investment details.
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
+                            ))}
                         </div>
 
                         {/* Contact Info */}
                         <div className="mt-16 pt-16 border-t border-white/10">
-                            <h3 className="text-[20px] font-semibold mb-8 text-[#c9a961] uppercase tracking-[0.2em]" style={{ fontFamily: "'Inter', sans-serif" }}>
-                                Other Ways to Reach Us
+                            <h3 className="text-[20px] font-semibold mb-8 text-[#c9a961] uppercase tracking-[0.2em] font-inter">
+                                {otherWays.title}
                             </h3>
-                            <div className="space-y-4 text-white/60 text-[15px] font-light" style={{ fontFamily: "'Inter', sans-serif" }}>
+                            <div className="space-y-4 text-white/60 text-[15px] font-light font-inter">
                                 <p>
                                     <span className="text-white/40 uppercase text-[12px] tracking-[0.2em] block mb-2">Email</span>
-                                    interiqinteriors@gmail.com
-
-
+                                    {otherWays.email}
                                 </p>
                                 <p>
                                     <span className="text-white/40 uppercase text-[12px] tracking-[0.2em] block mb-2">Phone</span>
-                                    +91 7008951964
+                                    {otherWays.phone}
                                 </p>
                                 <p>
                                     <span className="text-white/40 uppercase text-[12px] tracking-[0.2em] block mb-2">Office Hours</span>
-                                    Monday - Friday, 9:00 AM - 6:00 PM
+                                    {otherWays.hours}
                                 </p>
                             </div>
                         </div>
@@ -411,8 +417,7 @@ const BookConsultation = () => {
                 >
                     <Link
                         to="/"
-                        className="text-white/60 hover:text-[#c9a961] text-[13px] uppercase tracking-[0.3em] transition-colors inline-flex items-center gap-3"
-                        style={{ fontFamily: "'Inter', sans-serif" }}
+                        className="text-white/60 hover:text-[#c9a961] text-[13px] uppercase tracking-[0.3em] transition-colors inline-flex items-center gap-3 font-inter"
                     >
                         ← Back to Home 
                     </Link>

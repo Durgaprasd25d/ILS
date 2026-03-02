@@ -2,13 +2,16 @@ import { motion, useScroll, useTransform } from 'framer-motion'
 import { Link } from 'react-router'
 import heroBg from '../assets/image-01.jpg'
 
-const Hero = () => {
+const Hero = ({ content }) => {
     const { scrollY } = useScroll()
     const y1 = useTransform(scrollY, [0, 500], [0, 200])
     const opacity = useTransform(scrollY, [0, 300], [1, 0])
     const scale = useTransform(scrollY, [0, 500], [1, 1.1])
     
-    const title = "Crafting timeless luxury spaces—built around your lifestyle."
+    const displayTitle = content?.title || "Crafting timeless luxury spaces—built around your lifestyle."
+    const displaySubtitle = content?.subtitle || "INTERIQ INTERIORS designs refined residential and commercial interiors with premium materials, balanced lighting, and timeless detailing."
+    const btnText = content?.btnText || "View Portfolio"
+    const btnLink = content?.btnLink || "/portfolio/residential"
     
     const sentence = {
         hidden: { opacity: 1 },
@@ -57,7 +60,7 @@ const Hero = () => {
                         className="text-[44px] sm:text-[64px] lg:text-[88px] xl:text-[100px] font-normal text-white leading-[1.05] tracking-tight mb-10"
                         style={{ fontFamily: "'Playfair Display', serif" }}
                     >
-                        {title.split(" ").map((word, index) => (
+                        {displayTitle.split(" ").map((word, index) => (
                             <span key={index} className="inline-block whitespace-nowrap mr-[0.25em]">
                                 {word.split("").map((char, charIdx) => (
                                     <motion.span key={charIdx} variants={letter} className="inline-block">
@@ -79,18 +82,18 @@ const Hero = () => {
                             className="text-white/60 text-[18px] lg:text-[22px] max-w-2xl leading-relaxed font-light"
                             style={{ fontFamily: "'Inter', sans-serif" }}
                         >
-                            INTERIQ INTERIORS designs refined residential and commercial interiors with premium materials, balanced lighting, and timeless detailing.
+                            {displaySubtitle}
                         </p>
 
                         {/* CTA Buttons */}
                         <div className="flex flex-wrap gap-6 lg:gap-8">
                             <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
                                 <Link
-                                    to="/portfolio/residential"
+                                    to={btnLink}
                                     className="inline-flex items-center justify-center px-12 lg:px-14 py-5 lg:py-6 bg-[#b89550] text-[#0a0a0a] font-bold transition-all duration-300 text-[12px] lg:text-[13px] uppercase tracking-[0.3em] shadow-2xl hover:bg-white"
                                     style={{ fontFamily: "'Inter', sans-serif" }}
                                 >
-                                    View Portfolio
+                                    {btnText}
                                 </Link>
                             </motion.div>
                             <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
@@ -99,7 +102,7 @@ const Hero = () => {
                                     className="inline-flex items-center justify-center px-12 lg:px-14 py-5 lg:py-6 border border-white/30 hover:border-white text-white font-bold transition-all duration-300 text-[12px] lg:text-[13px] uppercase tracking-[0.3em] backdrop-blur-md"
                                     style={{ fontFamily: "'Inter', sans-serif" }}
                                 >
-                                    Get Quote
+                                    Contact Studio
                                 </Link>
                             </motion.div>
                         </div>
