@@ -1,9 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router';
-import { motion, useScroll } from 'framer-motion';
-import { ArrowLeft, Clock, Share2, Facebook, Twitter, Linkedin } from 'lucide-react';
 import axios from 'axios';
+import { motion, useScroll } from 'framer-motion';
+import { ArrowLeft, Clock, Facebook, Twitter, Linkedin, Share2 } from 'lucide-react';
 import SEO from '../components/SEO';
+import Schema from '../components/Schema';
+import { API_URL, getImageUrl } from '../config';
 
 const BlogPost = () => {
     const { slug } = useParams();
@@ -14,7 +16,7 @@ const BlogPost = () => {
     useEffect(() => {
         const fetchBlog = async () => {
             try {
-                const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/blogs/${slug}`);
+                const response = await axios.get(`${API_URL}/api/blogs/${slug}`);
                 setBlog(response.data);
             } catch (error) {
                 console.error('Error fetching blog:', error);
@@ -43,9 +45,28 @@ const BlogPost = () => {
     return (
         <div className="bg-luxury-black pt-20">
             <SEO 
-                title={`${blog.metaTitle || blog.title} | INTERIQ`} 
-                description={blog.metaDescription || "Read more about luxury interior design at interiqinteriors.com"} 
+                title={`${blog.metaTitle || blog.title} | INTERIQ Design Journal`} 
+                description={blog.metaDescription || blog.summary || "Deep dive into luxury interior design narratives by INTERIQ Interiors."} 
+                ogTitle={blog.title}
+                ogDescription={blog.summary}
+                ogImage={getImageUrl(blog.featuredImage, { width: 1200 })}
+                ogType="article"
+                ogUrl={`https://interiqinteriors.com/blog/${blog.slug}`}
+                canonical={`https://interiqinteriors.com/blog/${blog.slug}`}
             />
+            <Schema type="BreadcrumbList" data={[
+                { name: 'Home', url: 'https://interiqinteriors.com' },
+                { name: 'Design Journal', url: 'https://interiqinteriors.com/blog' },
+                { name: blog.title, url: `https://interiqinteriors.com/blog/${blog.slug}` }
+            ]} />
+            <Schema type="BlogPosting" data={{
+                title: blog.title,
+                description: blog.summary || blog.metaDescription,
+                image: getImageUrl(blog.featuredImage, { width: 1200 }),
+                url: `https://interiqinteriors.com/blog/${blog.slug}`,
+                date: blog.createdAt,
+                author: blog.author
+            }} />
 
             {/* Reading progress bar */}
             <motion.div 
@@ -56,8 +77,8 @@ const BlogPost = () => {
             {/* Hero Header */}
             <header className="relative h-[80vh] w-full overflow-hidden">
                 <img 
-                    src={`${import.meta.env.VITE_IMAGE_BASE_URL}${blog.featuredImage}`} 
-                    alt={blog.title}
+                    src={getImageUrl(blog.featuredImage, { width: 1600 })} 
+                    alt={`${blog.title} - Architectural Photography by INTERIQ`}
                     className="w-full h-full object-cover grayscale-[0.3]"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-luxury-black via-luxury-black/40 to-transparent"></div>

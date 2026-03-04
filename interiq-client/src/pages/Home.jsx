@@ -3,10 +3,32 @@ import Hero from '../components/Hero'
 import img02 from '../assets/image-02.jpg'
 import img03 from '../assets/image-03.jpg'
 import { Link } from 'react-router'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import axios from 'axios'
 import SEO from '../components/SEO';
+import Schema from '../components/Schema';
+import { API_URL, getImageUrl } from '../config';
 
 const Home = () => {
+    const [content, setContent] = useState(null)
+    const [loading, setLoading] = useState(true)
+
+    useEffect(() => {
+        const fetchContent = async () => {
+            try {
+                const response = await axios.get(`${API_URL}/api/content/home`)
+                if (response.data && response.data.sections) {
+                    setContent(response.data.sections)
+                }
+            } catch (error) {
+                console.error('Error fetching home content:', error)
+            } finally {
+                setLoading(false)
+            }
+        }
+        fetchContent()
+    }, [])
+
     const fadeUp = {
         hidden: { opacity: 0, y: 100 },
         visible: { 
@@ -38,13 +60,33 @@ const Home = () => {
         setPos({ x: x * 0.4, y: y * 0.4 })
     }
 
+    // CMS data with fallbacks
+    const philosophy = content?.philosophy || {
+        label: "Design Philosophy",
+        title: "Refinement in Every Detail",
+        description: "Our approach to luxury is rooted in the subtle balance of texture, light, and form. We source the world's most exclusive materials to create interiors that are as tactile as they are visual.",
+        image: null
+    }
+
+    const curated = content?.curated || {
+        label: "Curated Spaces",
+        title: "Architectural Detailing",
+        description: "From custom millwork to precision-engineered lighting, every element of our design is considered at an architectural level to ensure perfect integration and timeless appeal.",
+        image: null
+    }
+
     return (
         <div className="min-h-screen bg-[#050505] overflow-x-hidden">
             <SEO 
-                title="INTERIQ Interiors | Luxury Interior Designer in Bhubaneswar | ODM Kitchens & Bespoke Homes" 
-                description="INTERIQ Interiors specializes in premium, bespoke interior design in Bhubaneswar, Odisha. We deliver unmatched luxury for residential and commercial spaces with a focus on ODM kitchens and turnkey solutions." 
+                title="INTERIQ Interiors | Luxury Interior Designer in Bhubaneswar | Bespoke Home & Office" 
+                description="INTERIQ Interiors is Bhubaneswar's premier luxury interior design studio. We specialize in bespoke residential and commercial spaces, modular kitchens, and turnkey interior solutions in Odisha." 
+                ogTitle="INTERIQ Interiors | Premium Interior Design Bhubaneswar"
+                ogDescription="Transform your space with INTERIQ. Expert interior design services in Bhubaneswar, specializing in luxury homes and modular kitchens."
+                ogUrl="https://interiqinteriors.com"
+                canonical="https://interiqinteriors.com"
             />
-            <Hero />
+            <Schema type="LocalBusiness" />
+            <Hero content={content?.hero} />
             
             {/* Feature Highlight Section 01 - Design Philosophy */}
             <section className="py-32 lg:py-64 w-full px-8 lg:px-20 max-w-[1800px] mx-auto overflow-hidden">
@@ -63,14 +105,14 @@ const Home = () => {
                                 className="text-[#c9a961] text-[12px] lg:text-[14px] uppercase tracking-[0.6em] font-semibold"
                                 style={{ fontFamily: "'Inter', sans-serif" }}
                             >
-                                Design Philosophy
+                                {philosophy.label}
                             </motion.p>
-                            <h2 className="text-[clamp(48px,8vw,96px)] font-normal leading-[1.05] text-white tracking-tighter" style={{ fontFamily: "'Playfair Display', serif" }}>
-                                Refinement in <br />Every Detail
+                            <h2 className="text-[clamp(48px,8vw,96px)] font-normal leading-[1.05] text-white tracking-tighter whitespace-pre-line" style={{ fontFamily: "'Playfair Display', serif" }}>
+                                {philosophy.title}
                             </h2>
                         </div>
                         <p className="text-white/50 text-[18px] lg:text-[22px] leading-relaxed max-w-xl font-light" style={{ fontFamily: "'Inter', sans-serif" }}>
-                            Our approach to luxury is rooted in the subtle balance of texture, light, and form. We source the world's most exclusive materials to create interiors that are as tactile as they are visual.
+                            {philosophy.description}
                         </p>
                         
                         <motion.div 
@@ -99,8 +141,8 @@ const Home = () => {
                         <motion.img 
                             whileHover={{ scale: 1.1 }}
                             transition={{ duration: 1.5, ease: "circOut" }}
-                            src={img02} 
-                            alt="Luxury Mood" 
+                            src={philosophy.image ? getImageUrl(philosophy.image, { width: 1200 }) : img02} 
+                            alt="Luxury Interior Design Philosophy - INTERIQ Interiors Bhubaneswar" 
                             className="w-full h-full object-cover grayscale-[30%] group-hover:grayscale-0 transition-all duration-1000"
                         />
                         <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-1000" />
@@ -125,14 +167,14 @@ const Home = () => {
                                 className="text-[#c9a961] text-[12px] lg:text-[14px] uppercase tracking-[0.6em] font-semibold"
                                 style={{ fontFamily: "'Inter', sans-serif" }}
                             >
-                                Curated Spaces
+                                {curated.label}
                             </motion.p>
-                            <h2 className="text-[clamp(48px,8vw,96px)] font-normal leading-[1.05] text-white tracking-tighter" style={{ fontFamily: "'Playfair Display', serif" }}>
-                                Architectural <br />Detailing
+                            <h2 className="text-[clamp(48px,8vw,96px)] font-normal leading-[1.05] text-white tracking-tighter whitespace-pre-line" style={{ fontFamily: "'Playfair Display', serif" }}>
+                                {curated.title}
                             </h2>
                         </div>
                         <p className="text-white/50 text-[18px] lg:text-[22px] leading-relaxed max-w-xl font-light" style={{ fontFamily: "'Inter', sans-serif" }}>
-                            From custom millwork to precision-engineered lighting, every element of our design is considered at an architectural level to ensure perfect integration and timeless appeal.
+                            {curated.description}
                         </p>
                         
                         <motion.div 
@@ -161,8 +203,8 @@ const Home = () => {
                         <motion.img 
                             whileHover={{ scale: 1.1 }}
                             transition={{ duration: 1.5, ease: "circOut" }}
-                            src={img03} 
-                            alt="Design Details" 
+                            src={curated.image ? getImageUrl(curated.image, { width: 1200 }) : img03} 
+                            alt="Curated Interior Spaces and Architectural Detailing - INTERIQ Bhubaneswar" 
                             className="w-full h-full object-cover grayscale-[30%] group-hover:grayscale-0 transition-all duration-1000"
                         />
                         <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-1000" />

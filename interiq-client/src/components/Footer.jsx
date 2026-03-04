@@ -1,6 +1,8 @@
 import { Link } from 'react-router'
 import { motion } from 'framer-motion'
 import { useState } from 'react'
+import axios from 'axios';
+import { API_URL } from '../config';
 import logo from '../../logo.png'
 
 const Footer = () => {
@@ -13,15 +15,9 @@ const Footer = () => {
         
         setStatus('loading')
         try {
-            const response = await fetch(`${import.meta.env.VITE_API_URL}/api/join-circle`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ email })
-            })
+            const response = await axios.post(`${API_URL}/api/join-circle`, { email });
 
-            if (response.ok) {
+            if (response.status === 200 || response.status === 201) {
                 setStatus('success')
                 setEmail('')
                 setTimeout(() => setStatus(null), 3000)
@@ -40,7 +36,7 @@ const Footer = () => {
                 <div className="grid grid-cols-1 lg:grid-cols-4 gap-20">
                     {/* Brand Section */}
                     <div className="lg:col-span-2 space-y-10">
-                        <Link to="/" className="flex items-center group">
+                        <Link to="/" className="flex items-center group" aria-label="INTERIQ Interiors Home">
                             <img
                                 src={logo}
                                 alt="INTERIQ Interiors | Luxury Interior Designer in Bhubaneswar"

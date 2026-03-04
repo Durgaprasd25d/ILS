@@ -61,10 +61,10 @@ const Navigation = () => {
         >
             <div className="max-w-[1800px] mx-auto px-8 lg:px-16 h-24 lg:h-32 flex items-center justify-between border-b border-white/5">
                 {/* Logo Branding */}
-                <Link to="/" className="group flex items-center gap-3 select-none">
+                <Link to="/" className="group flex items-center gap-3 select-none" aria-label="INTERIQ Interiors Home">
                     <img 
                         src={brandLogo} 
-                        alt="INTERIQ" 
+                        alt="INTERIQ Interiors - Luxury Design Excellence" 
                         className="h-14 lg:h-24 w-auto object-contain brightness-110 contrast-110 hover:scale-105 transition-transform duration-500"
                     />
                 </Link>
@@ -140,6 +140,7 @@ const Navigation = () => {
                 <button
                     onClick={() => setIsOpen(!isOpen)}
                     className="lg:hidden text-white p-2 relative z-[60]"
+                    aria-label={isOpen ? "Close navigation menu" : "Open navigation menu"}
                 >
                     <motion.div
                         animate={isOpen ? "open" : "closed"}

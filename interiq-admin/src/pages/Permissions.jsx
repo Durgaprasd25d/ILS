@@ -340,7 +340,7 @@ const Permissions = () => {
                                 setIsSyncing(true);
                                 try {
                                     const response = await api.post('/permissions/sync');
-                                    setPermissions(response.data);
+                                    setPermissions(Array.isArray(response.data) ? response.data : []);
                                     toast.success('System topography synchronized');
                                 } catch (error) {
                                     toast.error('Sync failed');

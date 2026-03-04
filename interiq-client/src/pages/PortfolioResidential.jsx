@@ -10,6 +10,7 @@ import img10 from '../assets/image-10.jpg'
 import img11 from '../assets/image-11.jpg'
 import img12 from '../assets/image-12.jpg'
 import SEO from '../components/SEO';
+import Schema from '../components/Schema';
 
 const portfolioItems = [
     { id: 4, src: img04, title: 'The Meridian Residence', category: 'Apartment' },
@@ -45,9 +46,18 @@ const PortfolioResidential = () => {
     return (
         <div className="pt-24 lg:pt-32 bg-black min-h-screen text-white">
             <SEO 
-                title="Residential Portfolio | Luxury Homes by INTERIQ Interiors Bhubaneswar" 
-                description="Explore our collection of bespoke residential interiors, including the Meridian series, luxury penthouses, and private estates curated by INTERIQ." 
+                title="Residential Portfolio | Luxury Homes & Penthouses Bhubaneswar | INTERIQ" 
+                description="Witness the intersection of luxury and comfort. Explore INTERIQ's residential portfolio featuring high-end apartments, bespoke penthouses, and elite villas in Bhubaneswar." 
+                ogTitle="Residential Interior Showcase | INTERIQ Interiors"
+                ogDescription="Discover our curated collection of luxury homes and private residences in Odisha."
+                ogUrl="https://interiqinteriors.com/portfolio/residential"
+                canonical="https://interiqinteriors.com/portfolio/residential"
             />
+            <Schema type="BreadcrumbList" data={[
+                { name: 'Home', url: 'https://interiqinteriors.com' },
+                { name: 'Portfolio', url: 'https://interiqinteriors.com/portfolio/residential' },
+                { name: 'Residential', url: 'https://interiqinteriors.com/portfolio/residential' }
+            ]} />
             <div className="w-full px-8 lg:px-20 py-16 max-w-[1800px] mx-auto">
                 <motion.div 
                     initial={{ opacity: 0, y: 20 }}
@@ -81,7 +91,7 @@ const PortfolioResidential = () => {
                         >
                             <motion.img 
                                 src={item.src} 
-                                alt={item.title} 
+                                alt={`${item.title} - ${item.category} Interior Design by INTERIQ`} 
                                 className="w-full h-full object-cover grayscale-[30%] group-hover:grayscale-0 transition-all duration-1000 group-hover:scale-110"
                             />
                             {/* Overlay Card Style */}

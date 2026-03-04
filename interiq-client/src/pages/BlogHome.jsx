@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router';
+import axios from 'axios';
 import { motion } from 'framer-motion';
 import { ArrowUpRight, Search, Loader2 } from 'lucide-react';
-import axios from 'axios';
 import SEO from '../components/SEO';
-
+import Schema from '../components/Schema';
+import { API_URL, getImageUrl } from '../config';
 const BlogHome = () => {
     const [blogs, setBlogs] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -14,8 +15,8 @@ const BlogHome = () => {
         const fetchBlogs = async () => {
             try {
                 // Fetch only published blogs
-                const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/blogs?status=Published`);
-                setBlogs(response.data);
+                const response = await axios.get(`${API_URL}/api/blogs?status=Published`);
+                setBlogs(Array.isArray(response.data) ? response.data : []);
             } catch (error) {
                 console.error('Error fetching blogs:', error);
             } finally {
@@ -25,16 +26,24 @@ const BlogHome = () => {
         fetchBlogs();
     }, []);
 
-    const filteredBlogs = blogs.filter(blog => 
-        blog.title.toLowerCase().includes(searchTerm.toLowerCase())
+    const filteredBlogs = (Array.isArray(blogs) ? blogs : []).filter(blog => 
+        blog.title?.toLowerCase().includes(searchTerm.toLowerCase()) && blog.slug
     );
 
     return (
         <div className="pt-32 pb-20 bg-luxury-black">
-            <SEO 
-                title="The Journal | INTERIQ INTERIORS Bhubaneswar" 
-                description="Explore the latest trends in luxury interior design, modular kitchens, and architectural excellence in Odisha through our design journal." 
+            <SEO
+                title="Design Journal | Luxury Interior Trends & Insights INTERIQ" 
+                description="Explore the INTERIQ Design Journal for the latest trends in luxury interior design, modular kitchen innovations, and architectural refinement in Bhubaneswar." 
+                ogTitle="The Journal | INTERIQ Interiors Design Insights"
+                ogDescription="Deep dives into the narrative of space and luxury interior execution."
+                ogUrl="https://interiqinteriors.com/blog"
+                canonical="https://interiqinteriors.com/blog"
             />
+            <Schema type="BreadcrumbList" data={[
+                { name: 'Home', url: 'https://interiqinteriors.com' },
+                { name: 'Design Journal', url: 'https://interiqinteriors.com/blog' }
+            ]} />
 
             <div className="container mx-auto px-6">
                 <header className="mb-20 text-center max-w-4xl mx-auto">
@@ -91,8 +100,8 @@ const BlogHome = () => {
                             >
                                 <Link to={`/blog/${blog.slug}`} className="block overflow-hidden rounded-2xl relative aspect-[4/5] bg-luxury-gray">
                                     <img 
-                                        src={`${import.meta.env.VITE_IMAGE_BASE_URL}${blog.featuredImage}`} 
-                                        alt={blog.title}
+                                        src={getImageUrl(blog.featuredImage, { width: 800 })} 
+                                        alt={`${blog.title} - Luxury Interior Design Journal by INTERIQ`}
                                         className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110 grayscale-[0.5] group-hover:grayscale-0"
                                     />
                                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60 group-hover:opacity-80 transition-opacity"></div>

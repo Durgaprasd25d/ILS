@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
+import { API_URL } from '../config';
 import { motion } from 'framer-motion'
 import { Link } from 'react-router'
 import SEO from '../components/SEO';
@@ -11,7 +12,7 @@ const BookConsultation = () => {
     useEffect(() => {
         const fetchContent = async () => {
             try {
-                const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/content/consultation`)
+                const response = await axios.get(`${API_URL}/api/content/consultation`)
                 if (response.data && response.data.sections) {
                     setContent(response.data.sections)
                 }
@@ -51,15 +52,8 @@ const BookConsultation = () => {
         setSubmitStatus(null)
         
         try {
-            const response = await fetch(`${import.meta.env.VITE_API_URL}/api/consultation`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(formData)
-            });
-
-            if (response.ok) {
+            const response = await axios.post(`${API_URL}/api/consultation`, formData);
+            if (response.status === 200 || response.status === 201) {
                 setSubmitStatus('success')
                 // Reset form
                 setFormData({

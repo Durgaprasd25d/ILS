@@ -1,7 +1,9 @@
 import { motion } from 'framer-motion'
 import { useState, useEffect } from 'react'
 import axios from 'axios'
+import { API_URL } from '../config';
 import SEO from '../components/SEO';
+import Schema from '../components/Schema';
 import { Phone, Mail, MapPin, MessageSquare } from 'lucide-react'
 import img20 from '../assets/image-20.jpg'
 
@@ -12,7 +14,7 @@ const Contact = () => {
     useEffect(() => {
         const fetchContent = async () => {
             try {
-                const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/content/contact`)
+                const response = await axios.get(`${API_URL}/api/content/contact`)
                 if (response.data && response.data.sections) {
                     setContent(response.data.sections)
                 }
@@ -43,13 +45,8 @@ const Contact = () => {
         setSubmitStatus(null)
         
         try {
-            const response = await fetch(`${import.meta.env.VITE_API_URL}/api/inquiry`, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(formData)
-            })
-
-            if (response.ok) {
+            const response = await axios.post(`${API_URL}/api/inquiry`, formData);
+            if (response.status === 200 || response.status === 201) {
                 setSubmitStatus('success')
                 setFormData({ name: '', email: '', message: '' })
             } else {
@@ -72,7 +69,7 @@ const Contact = () => {
         }
     }
 
-    const contactDetails = {
+    const contactDetails = content?.details || {
         phones: ["+91 9437222340", "+91 9437222344"],
         office: "0674-4525580",
         email: "info@interiq.in",
@@ -80,14 +77,27 @@ const Contact = () => {
         whatsapp: "9437222344"
     }
 
+    const header = content?.header || {
+        label: "Inquiry Portal",
+        title: "Let's Create \nSomething Timeless",
+        image: null
+    }
+
     return (
         <div className="pt-24 lg:pt-32 bg-black min-h-screen text-white">
             <SEO 
-                title="Contact Us | Interior Designer in Bhubaneswar | INTERIQ Interiors" 
-                description="INTERIQ Interiors is a premium interior designer in Bhubaneswar offering luxury residential interiors, modular kitchens, and turnkey solutions across Odisha." 
-                ogTitle="Contact Us | Interior Designer in Bhubaneswar | INTERIQ Interiors" 
-                ogDescription="INTERIQ Interiors is a premium interior designer in Bhubaneswar offering luxury residential interiors, modular kitchens, and turnkey solutions across Odisha." 
+                title="Contact INTERIQ | Luxury Interior Designer in Bhubaneswar" 
+                description="Begin your journey into luxury. Contact INTERIQ INTERIORS for bespoke residential design, modular kitchens, and commercial workplace solutions in Bhubaneswar and Odisha." 
+                ogTitle="Connect with INTERIQ Interiors Bhubaneswar"
+                ogDescription="Schedule a consultation for your premium interior project. Leading design studio in Odisha."
+                ogUrl="https://interiqinteriors.com/contact"
+                canonical="https://interiqinteriors.com/contact"
             />
+            <Schema type="BreadcrumbList" data={[
+                { name: 'Home', url: 'https://interiqinteriors.com' },
+                { name: 'Contact Studio', url: 'https://interiqinteriors.com/contact' }
+            ]} />
+            <Schema type="LocalBusiness" />
 
             {/* Dramatic Header */}
             <div className="relative h-[50vh] lg:h-[70vh] flex items-center justify-center overflow-hidden">
@@ -95,7 +105,7 @@ const Contact = () => {
                     initial={{ scale: 1.1, opacity: 0 }}
                     animate={{ scale: 1, opacity: 0.4 }}
                     transition={{ duration: 2 }}
-                    src={img20} 
+                    src={header.image ? getImageUrl(header.image, { width: 1600 }) : img20} 
                     alt="Interior Design Studio Bhubaneswar - INTERIQ Interiors Contact" 
                     className="absolute inset-0 w-full h-full object-cover grayscale-[30%]"
                 />
@@ -107,10 +117,10 @@ const Contact = () => {
                     className="relative z-10 text-center px-8"
                 >
                     <p className="text-[#c9a961] text-[10px] lg:text-[12px] uppercase tracking-[0.5em] mb-6 font-medium font-inter">
-                        Inquiry Portal
+                        {header.label}
                     </p>
-                    <h1 className="text-[48px] lg:text-[100px] font-normal leading-tight font-playfair">
-                        Let's Create <br />Something Timeless
+                    <h1 className="text-[48px] lg:text-[100px] font-normal leading-tight font-playfair whitespace-pre-line">
+                        {header.title}
                     </h1>
                 </motion.div>
             </div>

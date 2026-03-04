@@ -3,8 +3,11 @@
 @theme {
   --color-primary: #c9a961;
   --color-primary-dark: #b89851;
+  --color-primary-light: #dcb46a;
   --color-luxury-black: #050505;
-  --color-luxury-gray: #1a1a1a;
+  --color-luxury-gray: #0a0a0a;
+  --color-glass-deep: rgba(10, 10, 10, 0.85);
+  --color-glass-light: rgba(255, 255, 255, 0.03);
 
   --font-inter: "Inter", sans-serif;
   --font-playfair: "Playfair Display", serif;
@@ -12,7 +15,7 @@
 
 @layer base {
   body {
-    @apply font-inter bg-luxury-black text-white antialiased;
+    @apply font-inter bg-luxury-black text-white antialiased selection:bg-primary selection:text-black;
   }
 
   h1,
@@ -21,27 +24,49 @@
   h4,
   h5,
   h6 {
-    @apply font-playfair;
+    @apply font-playfair tracking-tight;
+  }
+}
+
+@layer components {
+  .glass-blur {
+    @apply backdrop-blur-xl bg-glass-deep border border-white/5;
+  }
+
+  .glass-card {
+    @apply bg-white/[0.02] backdrop-blur-md border border-white/10 hover:border-primary/30 transition-all duration-500 shadow-2xl;
+  }
+
+  .glass-nav-link {
+    @apply flex items-center gap-4 px-6 py-4 rounded-xl text-white/40 hover:text-white hover:bg-white/[0.03] transition-all duration-300;
+  }
+
+  .glass-nav-link-active {
+    @apply text-primary bg-primary/5 border border-primary/20 shadow-[0_0_20px_rgba(201,169,97,0.1)];
+  }
+
+  .premium-button {
+    @apply px-8 py-3 bg-primary text-black font-bold uppercase tracking-widest text-[11px] hover:bg-white transition-all duration-500 shadow-lg shadow-primary/20;
   }
 }
 
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
-  width: 6px;
+  width: 5px;
 }
 ::-webkit-scrollbar-track {
   @apply bg-luxury-black;
 }
 ::-webkit-scrollbar-thumb {
-  @apply bg-primary/20 hover:bg-primary/40 rounded-full transition-colors;
+  @apply bg-primary/20 hover:bg-primary/40 rounded-full;
 }
 
 /* Quill Editor Styles */
 .ql-container.ql-snow {
-  @apply border-white/10! bg-white/5! rounded-b-lg!;
+  @apply border-white/10! bg-white/[0.02]! rounded-b-2xl! backdrop-blur-md!;
 }
 .ql-toolbar.ql-snow {
-  @apply border-white/10! bg-white/5! rounded-t-lg!;
+  @apply border-white/10! bg-white/5! rounded-t-2xl! mt-4!;
 }
 .ql-snow .ql-stroke {
   @apply stroke-white!;
@@ -50,5 +75,5 @@
   @apply fill-white!;
 }
 .ql-editor {
-  @apply min-h-[300px] text-lg leading-relaxed;
+  @apply min-h-[400px] text-lg leading-relaxed px-8 py-6;
 }

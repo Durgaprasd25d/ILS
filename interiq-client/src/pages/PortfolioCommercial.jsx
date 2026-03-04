@@ -1,5 +1,7 @@
 import { motion } from 'framer-motion'
 import { Link } from 'react-router'
+import SEO from '../components/SEO';
+import Schema from '../components/Schema';
 import img13 from '../assets/image-13.jpg'
 import img16 from '../assets/image-16.jpg'
 import img20 from '../assets/image-20.jpg'
@@ -31,6 +33,19 @@ const commercialProjects = [
 const PortfolioCommercial = () => {
     return (
         <div className="pt-24 lg:pt-32 bg-black min-h-screen text-white">
+            <SEO 
+                title="Commercial Portfolio | Strategic Workplace Design Bhubaneswar | INTERIQ" 
+                description="Expert interior design for corporate offices, hospitality spaces, and retail environments. See how INTERIQ defines business excellence through architectural detailing in Odisha." 
+                ogTitle="Commercial Interior Architecture | INTERIQ Interiors"
+                ogDescription="Transforming workspaces into high-performance environments. View our commercial design portfolio."
+                ogUrl="https://interiqinteriors.com/portfolio/commercial"
+                canonical="https://interiqinteriors.com/portfolio/commercial"
+            />
+            <Schema type="BreadcrumbList" data={[
+                { name: 'Home', url: 'https://interiqinteriors.com' },
+                { name: 'Portfolio', url: 'https://interiqinteriors.com/portfolio/commercial' },
+                { name: 'Commercial', url: 'https://interiqinteriors.com/portfolio/commercial' }
+            ]} />
             <div className="w-full px-8 lg:px-20 py-16 max-w-[1800px] mx-auto">
                 {/* Header Section */}
                 <motion.div 
@@ -67,7 +82,7 @@ const PortfolioCommercial = () => {
                             >
                                 <img 
                                     src={project.image} 
-                                    alt={project.title} 
+                                    alt={`${project.title} - ${project.category} Design Execution by INTERIQ`} 
                                     className="w-full h-full object-cover grayscale-[20%] group-hover:grayscale-0 transition-all duration-1000"
                                 />
                                 <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-500"></div>
@@ -119,7 +134,7 @@ const PortfolioCommercial = () => {
                     <div className="flex-1 w-full aspect-square lg:aspect-auto overflow-hidden">
                         <img 
                             src={img13} 
-                            alt="Brand Excellence" 
+                            alt="Corporate Interior Excellence and Brand Detailing - INTERIQ Bhubaneswar" 
                             className="w-full h-full object-cover grayscale opacity-40 hover:grayscale-0 hover:opacity-80 transition-all duration-1000"
                         />
                     </div>

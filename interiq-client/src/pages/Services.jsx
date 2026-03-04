@@ -1,41 +1,79 @@
 import { motion } from 'framer-motion'
 import { Link } from 'react-router'
+import { useState, useEffect } from 'react'
+import axios from 'axios'
+import SEO from '../components/SEO';
+import Schema from '../components/Schema';
+import { API_URL, getImageUrl } from '../config';
 import img14 from '../assets/image-14.jpg'
 import img15 from '../assets/image-15.jpg'
 import img17 from '../assets/image-17.jpg'
-import SEO from '../components/SEO';
-
-const serviceItems = [
-    {
-        id: 14,
-        title: 'Residential Master-Planning',
-        description: 'Bespoke end-to-end living environments tailored to individual lifestyles, featuring premium materials and architectural precision.',
-        image: img14,
-        label: 'Residential Strategy'
-    },
-    {
-        id: 15,
-        title: 'Commercial Workflow Design',
-        description: 'Optimized high-performance workspaces that blend corporate productivity with the tranquility of private luxury.',
-        image: img15,
-        label: 'Corporate Environments'
-    },
-    {
-        id: 17,
-        title: 'Hospitality Architecture',
-        description: 'Creation of immersive brand environments that prioritize guest experience and operational flow without compromise.',
-        image: img17,
-        label: 'Leisure & Hospitality'
-    }
-]
 
 const Services = () => {
+    const [content, setContent] = useState(null)
+    const [loading, setLoading] = useState(true)
+
+    useEffect(() => {
+        const fetchContent = async () => {
+            try {
+                const response = await axios.get(`${API_URL}/api/content/services`)
+                if (response.data && response.data.sections) {
+                    setContent(response.data.sections)
+                }
+            } catch (error) {
+                console.error('Error fetching services content:', error)
+            } finally {
+                setLoading(false)
+            }
+        }
+        fetchContent()
+    }, [])
+
+    // CMS data with fallbacks
+    const header = content?.header || {
+        label: "Our Expertise",
+        title: "Holistic Services",
+        description: "From initial concept to final staging, we provide a seamless synthesis of architectural detailing and interior curation."
+    }
+
+    const serviceItems = content?.items || [
+        {
+            id: 1,
+            title: 'Residential Master-Planning',
+            description: 'Bespoke end-to-end living environments tailored to individual lifestyles, featuring premium materials and architectural precision.',
+            image: img14,
+            label: 'Residential Strategy'
+        },
+        {
+            id: 2,
+            title: 'Commercial Workflow Design',
+            description: 'Optimized high-performance workspaces that blend corporate productivity with the tranquility of private luxury.',
+            image: img15,
+            label: 'Corporate Environments'
+        },
+        {
+            id: 3,
+            title: 'Hospitality Architecture',
+            description: 'Creation of immersive brand environments that prioritize guest experience and operational flow without compromise.',
+            image: img17,
+            label: 'Leisure & Hospitality'
+        }
+    ]
+
     return (
         <div className="pt-24 lg:pt-32 bg-black min-h-screen text-white">
             <SEO 
-                title="Our Services | Luxury Interior Design Bhubaneswar | INTERIQ" 
-                description="Explore the holistic interior design services of INTERIQ Interiors, ranging from residential master-planning to high-performance commercial environments in Odisha." 
+                title="Bespoke Interior Services | Modular Kitchens & Luxury Homes Bhubaneswar" 
+                description="INTERIQ INTERIORS offers a full suite of interior design services in Bhubaneswar, including residential master-planning, commercial workflow design, and luxury modular kitchens." 
+                ogTitle="Holistic Interior Design Services | INTERIQ Bhubaneswar"
+                ogDescription="From concept to execution, explore our premium design services for homes, offices, and hospitality projects."
+                ogUrl="https://interiqinteriors.com/services"
+                canonical="https://interiqinteriors.com/services"
             />
+            <Schema type="BreadcrumbList" data={[
+                { name: 'Home', url: 'https://interiqinteriors.com' },
+                { name: 'Services', url: 'https://interiqinteriors.com/services' }
+            ]} />
             <div className="w-full px-8 lg:px-20 py-16 max-w-[1800px] mx-auto">
                 {/* Header */}
                 <motion.div 
@@ -45,13 +83,13 @@ const Services = () => {
                     className="max-w-4xl mb-32"
                 >
                     <p className="text-[#c9a961] text-[10px] lg:text-[12px] uppercase tracking-[0.5em] font-medium mb-6" style={{ fontFamily: "'Inter', sans-serif" }}>
-                        Our Expertise
+                        {header.label}
                     </p>
-                    <h1 className="text-[48px] lg:text-[88px] font-normal leading-[1.05] mb-8" style={{ fontFamily: "'Playfair Display', serif" }}>
-                        Holistic Services
+                    <h1 className="text-[48px] lg:text-[88px] font-normal leading-[1.05] mb-8 whitespace-pre-line" style={{ fontFamily: "'Playfair Display', serif" }}>
+                        {header.title}
                     </h1>
-                    <p className="text-white/60 text-[18px] lg:text-[20px] max-w-2xl leading-relaxed font-light" style={{ fontFamily: "'Inter', sans-serif" }}>
-                        From initial concept to final staging, we provide a seamless synthesis of architectural detailing and interior curation.
+                    <p className="text-white/60 text-[18px] lg:text-[20px] max-w-2xl leading-relaxed font-light whitespace-pre-line" style={{ fontFamily: "'Inter', sans-serif" }}>
+                        {header.description}
                     </p>
                 </motion.div>
 
@@ -59,7 +97,7 @@ const Services = () => {
                 <div className="space-y-40 lg:space-y-64 mb-40">
                     {serviceItems.map((service, index) => (
                         <motion.div 
-                            key={service.id} 
+                            key={index} 
                             initial={{ opacity: 0, y: 50 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true, margin: "-100px" }}
@@ -72,8 +110,8 @@ const Services = () => {
                                 className="flex-1 w-full aspect-[16/10] lg:aspect-[3/2] overflow-hidden rounded-sm relative group"
                             >
                                 <img 
-                                    src={service.image} 
-                                    alt={service.title} 
+                                    src={service.image && typeof service.image === 'string' ? getImageUrl(service.image, { width: 1200 }) : (service.image || '/placeholder.jpg')} 
+                                    alt={`${service.title} - Luxury Interior Service by INTERIQ Bhubaneswar`} 
                                     className="w-full h-full object-cover grayscale-[20%] group-hover:grayscale-0 transition-all duration-1000"
                                 />
                                 <div className="absolute inset-0 bg-black/10 transition-colors duration-500 group-hover:bg-transparent"></div>
