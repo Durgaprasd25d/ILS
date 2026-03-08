@@ -14,6 +14,7 @@ import Contact from './pages/Contact'
 import BookConsultation from './pages/BookConsultation'
 import BlogHome from './pages/BlogHome'
 import BlogPost from './pages/BlogPost'
+import Founder from './pages/Founder'
 import Navigation from './components/Navigation'
 import Footer from './components/Footer'
 
@@ -50,6 +51,7 @@ function App() {
               <Route path="/contact" element={<Contact />} />
               <Route path="/blog" element={<BlogHome />} />
               <Route path="/blog/:slug" element={<BlogPost />} />
+              <Route path="/founder" element={<Founder />} />
             </Routes>
           </main>
           
