@@ -27,7 +27,7 @@ const Founder = () => {
     }
 
     return (
-        <div className="pt-24 lg:pt-32 bg-black min-h-screen text-white overflow-hidden selection:bg-[#c9a961] selection:text-black">
+        <div className="pt-20 lg:pt-32 bg-black min-h-screen text-white overflow-hidden selection:bg-[#c9a961] selection:text-black">
             <SEO 
                 title="Founder's Vision | INTERIQ Interiors" 
                 description="INTERIQ Interiors was founded with a vision to redefine luxury interior design in Bhubaneswar." 
@@ -41,20 +41,20 @@ const Founder = () => {
                 { name: "Founder's Vision", url: 'https://interiqinteriors.com/founder' }
             ]} />
 
-            <div className="w-full px-8 lg:px-20 py-16 max-w-[1800px] mx-auto">
+            <div className="w-full px-6 lg:px-20 py-12 lg:py-16 max-w-[1800px] mx-auto">
                 
                 {/* 6. FOUNDER'S VISION */}
-                <div className="flex flex-col lg:flex-row gap-16 lg:gap-32 items-center mb-32">
+                <div className="flex flex-col lg:flex-row gap-10 lg:gap-32 items-center mb-24 lg:mb-32">
                     <motion.div 
                         initial="hidden"
                         animate="visible"
                         variants={fadeUp}
-                        className="flex-1 space-y-10"
+                        className="flex-1 space-y-6 lg:space-y-10"
                     >
                         <p className="text-[#c9a961] text-[10px] uppercase tracking-[0.4em] font-semibold font-inter">
                             FOUNDER'S VISION
                         </p>
-                        <h1 className="text-[40px] lg:text-[64px] font-normal leading-[1.1] font-playfair mb-8">
+                        <h1 className="text-4xl lg:text-[64px] font-normal leading-[1.2] lg:leading-[1.1] font-playfair mb-6 lg:mb-8">
                             Redefining luxury <br /> interior design
                         </h1>
                         <div className="space-y-6 text-white/70 text-[18px] leading-relaxed font-light font-inter">
@@ -93,10 +93,10 @@ const Founder = () => {
                     whileInView="visible"
                     viewport={{ once: true }}
                     variants={fadeUp}
-                    className="mb-40 pt-20 border-t border-white/5 text-center max-w-4xl mx-auto"
+                    className="mb-24 lg:mb-40 pt-16 lg:pt-20 border-t border-white/5 text-center max-w-4xl mx-auto"
                 >
                     <p className="text-[#c9a961] text-[10px] uppercase tracking-[0.4em] mb-6 font-semibold font-inter">WHO WE ARE</p>
-                    <div className="space-y-6 text-white/50 text-xl font-light leading-relaxed">
+                    <div className="space-y-6 text-white/50 text-lg lg:text-xl font-light leading-relaxed">
                         <p>
                             We are a premium interior design and execution company committed to delivering high-end residential interiors with transparency, quality, and attention to detail.
                         </p>
@@ -107,9 +107,9 @@ const Founder = () => {
                 </motion.div>
 
                 {/* TEAM SECTION (Button/Bottom) */}
-                <div className="mb-40 pt-20 border-t border-white/5">
-                    <p className="text-[#c9a961] text-[10px] uppercase tracking-[0.4em] mb-12 font-semibold font-inter text-center">TEAM SECTION</p>
-                    <div className="flex flex-col lg:flex-row gap-16 items-center">
+                <div className="mb-24 lg:mb-40 pt-16 lg:pt-20 border-t border-white/5">
+                    <p className="text-[#c9a961] text-[10px] uppercase tracking-[0.4em] mb-8 lg:mb-12 font-semibold font-inter text-center lg:text-left">TEAM SECTION</p>
+                    <div className="flex flex-col-reverse lg:flex-row gap-10 lg:gap-16 items-center">
                         <motion.div 
                             initial="hidden"
                             whileInView="visible"
@@ -129,10 +129,10 @@ const Founder = () => {
                             whileInView="visible"
                             viewport={{ once: true }}
                             variants={fadeUp}
-                            className="flex-1 space-y-8"
+                            className="flex-1 space-y-6 lg:space-y-8 text-center lg:text-left"
                         >
-                            <h2 className="text-4xl lg:text-5xl font-playfair">Meet the Team</h2>
-                            <p className="text-white/60 text-xl font-light leading-relaxed">
+                            <h2 className="text-3xl lg:text-5xl font-playfair">Meet the Team</h2>
+                            <p className="text-white/60 text-lg lg:text-xl font-light leading-relaxed">
                                 Our designers, craftsmen, and project managers work together to deliver flawless execution. Every project is handled with care, creativity, and professionalism.
                             </p>
                         </motion.div>
@@ -140,7 +140,7 @@ const Founder = () => {
                 </div>
 
                 {/* TRUST SECTION & 4. WHERE WE SERVE */}
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 mb-40 border-t border-white/5 pt-20">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-24 mb-24 lg:mb-40 border-t border-white/5 pt-16 lg:pt-20">
                     
                     {/* TRUST SECTION */}
                     <motion.div 
@@ -148,7 +148,7 @@ const Founder = () => {
                         whileInView="visible"
                         viewport={{ once: true }}
                         variants={staggeredContainer}
-                        className="space-y-12 p-12 bg-[#050505] border border-white/5 rounded-sm"
+                        className="space-y-8 lg:space-y-12 p-8 lg:p-12 bg-[#050505] border border-white/5 rounded-sm"
                     >
                         <div>
                             <p className="text-[#c9a961] text-[10px] uppercase tracking-[0.4em] mb-6 font-semibold font-inter">TRUST SECTION</p>
@@ -180,7 +180,7 @@ const Founder = () => {
                         whileInView="visible"
                         viewport={{ once: true }}
                         variants={fadeUp}
-                        className="bg-[#050505] p-12 rounded-sm border border-white/5"
+                        className="bg-[#050505] p-8 lg:p-12 rounded-sm border border-white/5"
                     >
                         <MapPin className="w-10 h-10 text-[#c9a961] mb-8" />
                         <h2 className="text-3xl lg:text-4xl font-playfair mb-6">WHERE WE SERVE</h2>
@@ -205,7 +205,7 @@ const Founder = () => {
                     whileInView="visible"
                     viewport={{ once: true }}
                     variants={fadeUp}
-                    className="bg-[#c9a961] text-black p-12 lg:p-20 rounded-sm mb-40 grid grid-cols-1 lg:grid-cols-2 gap-16"
+                    className="bg-[#c9a961] text-black p-8 lg:p-20 rounded-sm mb-20 lg:mb-40 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16"
                 >
                     <div className="space-y-10">
                         <p className="text-black/60 text-[10px] uppercase tracking-[0.4em] font-bold font-inter">HOW TO CONTACT US</p>
@@ -215,7 +215,7 @@ const Founder = () => {
                         </p>
                         <Link 
                             to="/book-consultation"
-                            className="inline-flex items-center gap-3 text-white bg-black px-8 py-4 font-bold uppercase tracking-[0.1em] text-[12px] group hover:bg-white hover:text-black hover:border-black border border-transparent transition-all duration-300"
+                            className="flex justify-center lg:inline-flex items-center gap-3 text-white bg-black px-8 py-4 font-bold uppercase tracking-[0.1em] text-[12px] group hover:bg-white hover:text-black hover:border-black border border-transparent transition-all duration-300 w-full lg:w-auto"
                         >
                             Consultation Form <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                         </Link>
@@ -251,12 +251,12 @@ const Founder = () => {
                                 <span>interiqinteriors@gmail.com</span>
                             </div>
                         </div>
-                        <div className="pt-6">
+                        <div className="pt-4 lg:pt-6">
                             <a 
                                 href="https://wa.me/917008951964" 
                                 target="_blank" 
                                 rel="noopener noreferrer"
-                                className="inline-flex items-center gap-3 bg-[#25D366] text-white px-8 py-4 rounded-full font-bold uppercase tracking-[0.1em] text-[13px] hover:brightness-110 transition-all duration-300 shadow-lg"
+                                className="flex justify-center lg:inline-flex items-center gap-3 bg-[#25D366] text-white px-8 py-4 rounded-full font-bold uppercase tracking-[0.1em] text-[13px] hover:brightness-110 transition-all duration-300 shadow-lg w-full lg:w-auto"
                             >
                                 <MessageCircle className="w-5 h-5 fill-current" />
                                 WhatsApp Button

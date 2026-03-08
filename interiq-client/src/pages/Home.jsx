@@ -144,6 +144,7 @@ const Home = () => {
                             src={philosophy.image ? getImageUrl(philosophy.image, { width: 1200 }) : img02} 
                             alt="Luxury Interior Design Philosophy - INTERIQ Interiors Bhubaneswar" 
                             className="w-full h-full object-cover grayscale-[30%] group-hover:grayscale-0 transition-all duration-1000"
+                            loading="lazy"
                         />
                         <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-1000" />
                     </motion.div>
@@ -206,6 +207,7 @@ const Home = () => {
                             src={curated.image ? getImageUrl(curated.image, { width: 1200 }) : img03} 
                             alt="Curated Interior Spaces and Architectural Detailing - INTERIQ Bhubaneswar" 
                             className="w-full h-full object-cover grayscale-[30%] group-hover:grayscale-0 transition-all duration-1000"
+                            loading="lazy"
                         />
                         <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-1000" />
                     </motion.div>
@@ -220,7 +222,7 @@ const Home = () => {
                     transition={{ duration: 2 }}
                     className="absolute inset-0 z-0"
                 >
-                    <img src={img02} className="w-full h-full object-cover blur-2xl scale-150" alt="" />
+                    <img src={img02} className="w-full h-full object-cover blur-2xl scale-150" alt="" loading="lazy" />
                     <div className="absolute inset-0 bg-black"></div>
                 </motion.div>
                 

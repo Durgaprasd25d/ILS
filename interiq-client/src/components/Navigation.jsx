@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react'
 import { Link, useLocation } from 'react-router'
-import { motion, AnimatePresence } from 'framer-motion'
+import { useLenis } from 'lenis/react'
+import {motion, AnimatePresence} from 'framer-motion'
 import headerBg from '../assets/headerbgimage.jpeg'
 import brandLogo from '../../logo.png'
 
@@ -10,17 +11,21 @@ const Navigation = () => {
     const [mobileExpanded, setMobileExpanded] = useState(null)
     const location = useLocation()
     const navRef = useRef(null)
+    const lenis = useLenis()
 
     useEffect(() => {
         if (isOpen) {
             document.body.style.overflow = 'hidden'
+            if (lenis) lenis.stop()
         } else {
             document.body.style.overflow = 'auto'
+            if (lenis) lenis.start()
         }
         return () => {
             document.body.style.overflow = 'auto'
+            if (lenis) lenis.start()
         }
-    }, [isOpen])
+    }, [isOpen, lenis])
 
     const toggleMobileExpanded = (name) => {
         setMobileExpanded(mobileExpanded === name ? null : name)

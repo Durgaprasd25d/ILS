@@ -63,7 +63,12 @@ const Hero = ({ content }) => {
                         {displayTitle.split(" ").map((word, index) => (
                             <span key={index} className="inline-block whitespace-nowrap mr-[0.25em]">
                                 {word.split("").map((char, charIdx) => (
-                                    <motion.span key={charIdx} variants={letter} className="inline-block">
+                                    <motion.span 
+                                        key={charIdx} 
+                                        variants={letter} 
+                                        className="inline-block"
+                                        style={{ willChange: "transform, opacity" }} // Hardware acceleration
+                                    >
                                         {char}
                                     </motion.span>
                                 ))}
