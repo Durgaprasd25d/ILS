@@ -45,7 +45,7 @@ const Footer = () => {
                             />
                         </Link>
                         <p className="text-white/40 text-[18px] max-w-sm leading-relaxed font-light" style={{ fontFamily: "'Inter', sans-serif" }}>
-                            INTERIQ Interiors is a premier interior design studio specializing in luxury residential and turnkey solutions. We don't deliver excellence from concept to execution.
+                            INTERIQ Interiors is a premier interior design studio specializing in luxury residential and turnkey solutions. We deliver excellence from concept to execution.
                         </p>
                         <div className="space-y-4 pt-4 border-t border-white/5">
                             <p className="text-[#c9a961] text-[13px] tracking-widest font-medium">INTERIQ Interiors Studio, Plot No. 123, Janpath, Bhubaneswar, Odisha</p>
