@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router';
-import { Plus, Search, Edit2, Trash2, Eye, ExternalLink, Sparkles, Filter, ChevronRight } from 'lucide-react';
+import { Plus, Search, Edit2, Trash2, ExternalLink, Sparkles, PenTool } from 'lucide-react';
 import MainLayout from '../components/MainLayout';
 import api from '../api';
 import { getImageUrl } from '../config';
