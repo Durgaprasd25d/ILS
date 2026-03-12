@@ -69,7 +69,7 @@ const Sidebar = () => {
                         </div>
                         <div>
                             <p className="text-sm font-bold text-white uppercase tracking-wider">Admin</p>
-                            <p className="text-[10px] text-primary font-bold uppercase tracking-widest">Master Studio</p>
+                            <p className="text-[10px] text-primary font-bold uppercase tracking-widest">Teacher Studio</p>
                         </div>
                     </div>
                 </div>
