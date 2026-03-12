@@ -21,7 +21,17 @@ jobs:
 
           script: |
 
+            set -e
+
             echo "Starting deployment"
+
+            # Load Node environment (important for npm/pm2)
+            export NVM_DIR="$HOME/.nvm"
+            [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+
+            echo "Node version:"
+            node -v
+            npm -v
 
             cd ~/ILS
 
